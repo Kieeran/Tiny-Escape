@@ -48,11 +48,20 @@ function loadModel() {
 
 		var model = gltf.scene;
 
-		model.traverse(function (part) {
-			if (part.isMesh)
-				part.receiveShadow = true;
-		});
-		scene.add(model);
+		for (let i = -3; i < 4; i++) {
+			for (let j = -3; j < 4; j++) {
+				
+				var cloneModel = model.clone();
+				cloneModel.position.set(i * 2, 0, j * 2);
+
+				cloneModel.traverse(function (part) {
+					if (part.isMesh)
+						part.receiveShadow = true;
+				});
+
+				scene.add(cloneModel);
+			}
+		}
 
 	}, function (xhr) {
 		console.log((xhr.loaded / xhr.total * 100) + '% loaded');
