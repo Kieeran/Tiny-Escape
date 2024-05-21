@@ -54,6 +54,7 @@ function addLight() {
 	light.position.y = 10;
 
 	scene.add(light);
+	scene.add(new THREE.AmbientLight(0xffffff, 0.2));
 
 	const helper = new THREE.CameraHelper(light.shadow.camera);
 	scene.add(helper);
