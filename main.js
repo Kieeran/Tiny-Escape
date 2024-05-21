@@ -40,7 +40,16 @@ function init() {
 
 	camera.position.z = 5;
 
+	addLight();
 	animate();
+}
+
+function addLight() {
+	const light = new THREE.DirectionalLight(0xffffff, 1);
+	scene.add(light);
+
+	const helper = new THREE.CameraHelper(light.shadow.camera);
+	scene.add(helper);
 }
 
 function animate() {
