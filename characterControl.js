@@ -45,6 +45,13 @@ export class CharacterControls {
             this.currentAction = play;
         }
 
+        if (this.currentAction == 'Run' || this.currentAction == 'Walk') {
+            var angleYCameraDirection = Math.atan2(
+                this.camera.position.x - this.model.position.x,
+                this.camera.position.z - this.model.position.z
+            );
+        }
+
         this.mixer.update(delta);
     }
 }
