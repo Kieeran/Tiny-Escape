@@ -26,13 +26,7 @@ function init() {
 
 	loader = new GLTFLoader();
 	loadModel();
-
-	const geometry = new THREE.BoxGeometry(1, 1, 1);
-	const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-	const cube = new THREE.Mesh(geometry, material);
-	scene.add(cube);
-	cube.position.y = 3;
-	cube.castShadow = true;
+	loadCharacter();
 
 	const controls = new OrbitControls(camera, renderer.domElement);
 	controls.update();
@@ -50,7 +44,7 @@ function loadModel() {
 
 		for (let i = -3; i < 4; i++) {
 			for (let j = -3; j < 4; j++) {
-				
+
 				var cloneModel = model.clone();
 				cloneModel.position.set(i * 2, 0, j * 2);
 
@@ -62,6 +56,18 @@ function loadModel() {
 				scene.add(cloneModel);
 			}
 		}
+
+	}, function (xhr) {
+		console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+	}, function (error) {
+		console.log('An error happened');
+	});
+}
+
+function loadCharacter() {
+	loader.load('3D_Models/Character/Soldier.glb', function (gltf) {
+
+		scene.add(gltf.scene);
 
 	}, function (xhr) {
 		console.log((xhr.loaded / xhr.total * 100) + '% loaded');
