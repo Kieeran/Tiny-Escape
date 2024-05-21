@@ -23,13 +23,14 @@ function init() {
 	renderer.shadowMap.enabled = true;
 
 	const geometry = new THREE.BoxGeometry(1, 1, 1);
-	const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+	const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
 	const cube = new THREE.Mesh(geometry, material);
 	scene.add(cube);
+	cube.position.y = 3;
 	cube.castShadow = true;
 
 	const _geometry = new THREE.PlaneGeometry(5, 5);
-	const _material = new THREE.MeshBasicMaterial({
+	const _material = new THREE.MeshStandardMaterial({
 		color: 0xffffff,
 		side: THREE.DoubleSide
 	});
