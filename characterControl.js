@@ -32,8 +32,18 @@ export class CharacterControls {
             if (this.toggleRun) play = 'Run';
         }
         else play = 'Idle'
+        //console.log(play);
 
-        console.log(play);
+        // Simple FSM
+        if (this.currentAction != play) {
+            const toPlay = this.actions.get(play);
+            const current = this.actions.get(this.currentAction);
+
+            current.fadeOut(this.fadeDuration);
+            toPlay.reset().fadeIn(this.fadeDuration).play();
+
+            this.currentAction = play;
+        }
 
         this.mixer.update(delta);
     }
