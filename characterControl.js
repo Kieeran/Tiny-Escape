@@ -9,10 +9,21 @@ export class CharacterControls {
         this.actions = actions;
         this.currentAction = currentAction;
 
+        this.toggleRun = false;
+
         this.actions.forEach((key, value) => {
             if (key == currentAction) {
                 value.play();
             }
         });
+    }
+
+    switchRunToggle() {
+        this.toggleRun = !this.toggleRun;
+        //console.log(this.toggleRun);
+    }
+
+    _update(delta) {
+        this.mixer.update(delta);
     }
 }

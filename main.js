@@ -1,12 +1,14 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { CharacterControls } from './characterControl';
 
-let scene, camera, renderer;
+let scene, camera, renderer, controls;
 let loader;
 let actions, animations, mixer, clock;
 let mixerUpdateDelta;
 let keyPressed = {};
+let characterControls;
 
 init();
 
@@ -29,7 +31,7 @@ function init() {
 	document.body.appendChild(renderer.domElement);
 	renderer.shadowMap.enabled = true;
 
-	const controls = new OrbitControls(camera, renderer.domElement);
+	controls = new OrbitControls(camera, renderer.domElement);
 	controls.update();
 
 	loader = new GLTFLoader();
@@ -92,25 +94,28 @@ function loadCharacter() {
 
 		scene.add(model);
 
-	}, function (xhr) {
-		console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-	}, function (error) {
-		console.log('An error happened');
+		characterControls = new CharacterControls(model, mixer, controls, camera, actions, 'Idle');
+
 	});
 }
 
 function addControlKey() {
 
 	document.addEventListener('keydown', (event) => {
-		keyPressed[event.key.toLowerCase()] = true;
+		if (event.shiftKey && characterControls) {
+			characterControls.switchRunToggle();
+		}
+		else {
+			keyPressed[event.key.toLowerCase()] = true
+		}
 
-		console.log(event.key);
+		//console.log(event.key);
 	});
 
 	document.addEventListener('keyup', (event) => {
 		keyPressed[event.key.toLowerCase()] = false;
 
-		console.log(event.key);
+		//console.log(event.key);
 	});
 
 }
@@ -131,7 +136,10 @@ function animate() {
 	requestAnimationFrame(animate);
 
 	mixerUpdateDelta = clock.getDelta();
-	mixer.update(mixerUpdateDelta);
+
+	if (characterControls) {
+		characterControls._update(mixerUpdateDelta);
+	}
 
 	renderer.render(scene, camera);
 }
