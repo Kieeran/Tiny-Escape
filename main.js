@@ -6,6 +6,7 @@ let scene, camera, renderer;
 let loader;
 let actions, animations, mixer, clock;
 let mixerUpdateDelta;
+let keyPressed = {};
 
 init();
 
@@ -18,6 +19,8 @@ function init() {
 		1000
 	);
 
+	camera.position.set(0, 2, 5);
+
 	renderer = new THREE.WebGLRenderer({
 		alpha: true,
 		antialias: true
@@ -26,16 +29,16 @@ function init() {
 	document.body.appendChild(renderer.domElement);
 	renderer.shadowMap.enabled = true;
 
+	const controls = new OrbitControls(camera, renderer.domElement);
+	controls.update();
+
 	loader = new GLTFLoader();
 	loadModel();
 
 	actions = new Map();
 	loadCharacter();
 
-	const controls = new OrbitControls(camera, renderer.domElement);
-	controls.update();
-
-	camera.position.set(0, 2, 5);
+	addControlKey();
 
 	clock = new THREE.Clock();
 	addLight();
@@ -94,6 +97,22 @@ function loadCharacter() {
 	}, function (error) {
 		console.log('An error happened');
 	});
+}
+
+function addControlKey() {
+
+	document.addEventListener('keydown', (event) => {
+		keyPressed[event.key.toLowerCase()] = true;
+
+		console.log(event.key);
+	});
+
+	document.addEventListener('keyup', (event) => {
+		keyPressed[event.key.toLowerCase()] = false;
+
+		console.log(event.key);
+	});
+
 }
 
 function addLight() {
