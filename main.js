@@ -1,7 +1,9 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 let scene, camera, renderer;
+let loader;
 
 init();
 
@@ -21,6 +23,9 @@ function init() {
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	document.body.appendChild(renderer.domElement);
 	renderer.shadowMap.enabled = true;
+
+	loader = new GLTFLoader();
+	loadModel();
 
 	const geometry = new THREE.BoxGeometry(1, 1, 1);
 	const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
@@ -46,6 +51,10 @@ function init() {
 
 	addLight();
 	animate();
+}
+
+function loadModel() {
+
 }
 
 function addLight() {
