@@ -4,6 +4,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 let scene, camera, renderer;
 let loader;
+let actions, animations, mixer, clock;
+let mixerUpdateDelta;
 
 init();
 
@@ -26,6 +28,8 @@ function init() {
 
 	loader = new GLTFLoader();
 	loadModel();
+
+	actions = new Map();
 	loadCharacter();
 
 	const controls = new OrbitControls(camera, renderer.domElement);
@@ -33,6 +37,7 @@ function init() {
 
 	camera.position.set(0, 2, 5);
 
+	clock = new THREE.Clock();
 	addLight();
 	animate();
 }
@@ -73,6 +78,15 @@ function loadCharacter() {
 				part.castShadow = true;
 		});
 
+		animations = gltf.animations;
+		mixer = new THREE.AnimationMixer(model);
+
+		animations.filter(a => a.name != 'TPose').forEach((a) => {
+			actions.set(a.name, mixer.clipAction(a));
+		});
+
+		actions.get('Idle').play();
+
 		scene.add(model);
 
 	}, function (xhr) {
@@ -96,5 +110,9 @@ function addLight() {
 
 function animate() {
 	requestAnimationFrame(animate);
+
+	mixerUpdateDelta = clock.getDelta();
+	mixer.update(mixerUpdateDelta);
+
 	renderer.render(scene, camera);
 }
