@@ -34,16 +34,6 @@ function init() {
 	cube.position.y = 3;
 	cube.castShadow = true;
 
-	const _geometry = new THREE.PlaneGeometry(5, 5);
-	const _material = new THREE.MeshStandardMaterial({
-		color: 0xffffff,
-		side: THREE.DoubleSide
-	});
-	const plane = new THREE.Mesh(_geometry, _material);
-	plane.rotateX(-Math.PI / 2);
-	scene.add(plane);
-	plane.receiveShadow = true;
-
 	const controls = new OrbitControls(camera, renderer.domElement);
 	controls.update();
 
@@ -54,7 +44,21 @@ function init() {
 }
 
 function loadModel() {
+	loader.load('3D_Models/Floor/floor.gltf', function (gltf) {
 
+		var model = gltf.scene;
+
+		model.traverse(function (part) {
+			if (part.isMesh)
+				part.receiveShadow = true;
+		});
+		scene.add(model);
+
+	}, function (xhr) {
+		console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+	}, function (error) {
+		console.log('An error happened');
+	});
 }
 
 function addLight() {
