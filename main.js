@@ -31,7 +31,7 @@ function init() {
 	const controls = new OrbitControls(camera, renderer.domElement);
 	controls.update();
 
-	camera.position.z = 5;
+	camera.position.set(0, 2, 5);
 
 	addLight();
 	animate();
@@ -67,7 +67,13 @@ function loadModel() {
 function loadCharacter() {
 	loader.load('3D_Models/Character/Soldier.glb', function (gltf) {
 
-		scene.add(gltf.scene);
+		const model = gltf.scene;
+		model.traverse(function (part) {
+			if (part.isMesh)
+				part.castShadow = true;
+		});
+
+		scene.add(model);
 
 	}, function (xhr) {
 		console.log((xhr.loaded / xhr.total * 100) + '% loaded');
