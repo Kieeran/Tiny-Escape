@@ -23,7 +23,18 @@ export class CharacterControls {
         //console.log(this.toggleRun);
     }
 
-    _update(delta) {
+    _update(delta, keyPressed) {
+        const directionPressed = ['a', 'd', 'w', 's'].some(key => keyPressed[key]);
+        var play = '';
+
+        if (directionPressed) {
+            play = 'Walk';
+            if (this.toggleRun) play = 'Run';
+        }
+        else play = 'Idle'
+
+        console.log(play);
+
         this.mixer.update(delta);
     }
 }
