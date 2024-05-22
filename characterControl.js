@@ -5,6 +5,7 @@ export class CharacterControls {
     moveDirection = new THREE.Vector3();
     rotateAngle = new THREE.Vector3(0, 1, 0);
     rotateQuaternion = new THREE.Quaternion();
+    cameraTarget = new THREE.Vector3();
 
     fadeDuration = 0.2;
     runVelocity = 5;
@@ -77,9 +78,21 @@ export class CharacterControls {
 
             this.model.position.x += moveX;
             this.model.position.z += moveZ;
+
+            this.updateCameraTarget(moveX, moveZ);
         }
 
         this.mixer.update(delta);
+    }
+
+    updateCameraTarget(moveX, moveZ) {
+        this.camera.position.x += moveX;
+        this.camera.position.z += moveZ;
+
+        this.cameraTarget.x = this.model.position.x;
+        this.cameraTarget.y = this.model.position.y + 9;
+        this.cameraTarget.z = this.model.position.z;
+        this.controls.target = this.cameraTarget;
     }
 
     directionOffset(keyPressed) {
