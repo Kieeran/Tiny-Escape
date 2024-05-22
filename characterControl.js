@@ -87,7 +87,6 @@ export class CharacterControls {
 
     updateCameraTarget(moveX, moveZ) {
         this.camera.position.x += moveX;
-        this.camera.position.y = 0;
         this.camera.position.z += moveZ;
 
         this.cameraTarget.x = this.model.position.x;
