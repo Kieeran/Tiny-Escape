@@ -2,6 +2,7 @@ import * as THREE from 'three';
 
 export class CharacterControls {
 
+    moveDirection = new THREE.Vector3();
     rotateAngle = new THREE.Vector3(0, 1, 0);
     rotateQuaternion = new THREE.Quaternion();
 
@@ -61,6 +62,11 @@ export class CharacterControls {
 
             this.rotateQuaternion.setFromAxisAngle(this.rotateAngle, angleYCameraDirection + directionOffset);
             this.model.quaternion.rotateTowards(this.rotateQuaternion, 0.2);
+
+            this.camera.getWorldDirection(this.walkDirection);
+            this.moveDirection.y = 0;
+            this.moveDirection.normalize();
+            this.moveDirection.applyAxisAngle(this.rotateAngle, directionOffset);
         }
 
         this.mixer.update(delta);
