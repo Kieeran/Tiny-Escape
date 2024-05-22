@@ -138,7 +138,7 @@ function animate() {
 	mixerUpdateDelta = clock.getDelta();
 
 	if (characterControls) {
-		characterControls._update(mixerUpdateDelta, keyPressed);
+		characterControls.update(mixerUpdateDelta, keyPressed);
 	}
 
 	renderer.render(scene, camera);
