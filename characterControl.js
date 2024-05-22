@@ -7,6 +7,8 @@ export class CharacterControls {
     rotateQuaternion = new THREE.Quaternion();
 
     fadeDuration = 0.2;
+    runVelocity = 5;
+    walkVelocity = 2;
 
     constructor(model, mixer, orbitControl, camera, actions, currentAction) {
         this.model = model;
@@ -63,10 +65,18 @@ export class CharacterControls {
             this.rotateQuaternion.setFromAxisAngle(this.rotateAngle, angleYCameraDirection + directionOffset);
             this.model.quaternion.rotateTowards(this.rotateQuaternion, 0.2);
 
-            this.camera.getWorldDirection(this.walkDirection);
+            this.camera.getWorldDirection(this.moveDirection);
             this.moveDirection.y = 0;
             this.moveDirection.normalize();
             this.moveDirection.applyAxisAngle(this.rotateAngle, directionOffset);
+
+            const velocity = this.currentAction == 'Run' ? this.runVelocity : this.walkVelocity;
+
+            const moveX = this.moveDirection.x * velocity * delta;
+            const moveZ = this.moveDirection.z * velocity * delta;
+
+            this.model.position.x += moveX;
+            this.model.position.z += moveZ;
         }
 
         this.mixer.update(delta);
