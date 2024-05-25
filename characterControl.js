@@ -38,8 +38,8 @@ export class CharacterControls {
         var play = '';
 
         if (directionPressed) {
-            play = 'Walk';
-            if (this.toggleRun) play = 'Run';
+            play = 'Walking';
+            if (this.toggleRun) play = 'Running';
         }
         else play = 'Idle'
         //console.log(play);
@@ -55,7 +55,7 @@ export class CharacterControls {
             this.currentAction = play;
         }
 
-        if (this.currentAction == 'Run' || this.currentAction == 'Walk') {
+        if (this.currentAction == 'Running' || this.currentAction == 'Walking') {
             var angleYCameraDirection = Math.atan2(
                 this.camera.position.x - this.model.position.x,
                 this.camera.position.z - this.model.position.z
@@ -71,7 +71,7 @@ export class CharacterControls {
             this.moveDirection.normalize();
             this.moveDirection.applyAxisAngle(this.rotateAngle, directionOffset);
 
-            const velocity = this.currentAction == 'Run' ? this.runVelocity : this.walkVelocity;
+            const velocity = this.currentAction == 'Running' ? this.runVelocity : this.walkVelocity;
 
             const moveX = this.moveDirection.x * velocity * delta;
             const moveZ = this.moveDirection.z * velocity * delta;

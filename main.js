@@ -74,8 +74,33 @@ function loadModel() {
 	});
 }
 
+// function loadCharacter() {
+// 	loader.load('3D_Models/Character/Soldier.glb', function (gltf) {
+
+// 		const model = gltf.scene;
+// 		model.traverse(function (part) {
+// 			if (part.isMesh)
+// 				part.castShadow = true;
+// 		});
+
+// 		animations = gltf.animations;
+// 		mixer = new THREE.AnimationMixer(model);
+
+// 		animations.filter(a => a.name != 'TPose').forEach((a) => {
+// 			actions.set(a.name, mixer.clipAction(a));
+// 		});
+
+// 		actions.get('Idle').play();
+
+// 		scene.add(model);
+
+// 		characterControls = new CharacterControls(model, mixer, controls, camera, actions, 'Idle');
+
+// 	});
+// }
+
 function loadCharacter() {
-	loader.load('3D_Models/Character/Soldier.glb', function (gltf) {
+	loader.load('3D_Models/Character/RobotExpressive.glb', function (gltf) {
 
 		const model = gltf.scene;
 		model.traverse(function (part) {
@@ -83,10 +108,12 @@ function loadCharacter() {
 				part.castShadow = true;
 		});
 
+		model.scale.set(0.55, 0.55, 0.55);
+
 		animations = gltf.animations;
 		mixer = new THREE.AnimationMixer(model);
 
-		animations.filter(a => a.name != 'TPose').forEach((a) => {
+		animations.forEach((a) => {
 			actions.set(a.name, mixer.clipAction(a));
 		});
 
