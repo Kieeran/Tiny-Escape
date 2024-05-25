@@ -151,12 +151,17 @@ function addLight() {
 	const light = new THREE.DirectionalLight(0xffffff, 1);
 	light.castShadow = true;
 	light.position.y = 10;
-
 	scene.add(light);
-	scene.add(new THREE.AmbientLight(0xffffff, 0.2));
+
+	light.shadow.camera.top = 7;
+	light.shadow.camera.left = -7;
+	light.shadow.camera.right = 7;
+	light.shadow.camera.bottom = -7;
 
 	const helper = new THREE.CameraHelper(light.shadow.camera);
 	scene.add(helper);
+
+	scene.add(new THREE.AmbientLight(0xffffff, 0.2));
 }
 
 function animate() {

@@ -8,8 +8,8 @@ export class CharacterControls {
     cameraTarget = new THREE.Vector3();
 
     fadeDuration = 0.2;
-    runVelocity = 5;
-    walkVelocity = 2;
+    runVelocity = 6;
+    walkVelocity = 3;
 
     constructor(model, mixer, orbitControl, camera, actions, currentAction) {
         this.model = model;
@@ -64,7 +64,7 @@ export class CharacterControls {
             var directionOffset = this.directionOffset(keyPressed);
 
             this.rotateQuaternion.setFromAxisAngle(this.rotateAngle, angleYCameraDirection + directionOffset);
-            this.model.quaternion.rotateTowards(this.rotateQuaternion, 0.2);
+            this.model.quaternion.rotateTowards(this.rotateQuaternion, 0.15);
 
             this.camera.getWorldDirection(this.moveDirection);
             this.moveDirection.y = 0;
@@ -73,8 +73,8 @@ export class CharacterControls {
 
             const velocity = this.currentAction == 'Running' ? this.runVelocity : this.walkVelocity;
 
-            const moveX = this.moveDirection.x * velocity * delta;
-            const moveZ = this.moveDirection.z * velocity * delta;
+            const moveX = -this.moveDirection.x * velocity * delta;
+            const moveZ = -this.moveDirection.z * velocity * delta;
 
             this.model.position.x += moveX;
             this.model.position.z += moveZ;
@@ -96,29 +96,29 @@ export class CharacterControls {
     }
 
     directionOffset(keyPressed) {
-        var directionOffset = 0;
+        var directionOffset = Math.PI;
 
         if (keyPressed['w']) {
             if (keyPressed['a']) {
-                directionOffset = Math.PI / 4;
+                directionOffset = -3 * Math.PI / 4;
             }
             else if (keyPressed['d']) {
-                directionOffset = -Math.PI / 4;
+                directionOffset = 3 * Math.PI / 4;
             }
         }
         else if (keyPressed['s']) {
             if (keyPressed['a']) {
-                directionOffset = 3 * Math.PI / 4;
+                directionOffset = -Math.PI / 4;
             }
             else if (keyPressed['d']) {
-                directionOffset = -3 * Math.PI / 4;
+                directionOffset = Math.PI / 4;
             }
             else
-                directionOffset = Math.PI
+                directionOffset = 0;
         } else if (keyPressed['a']) {
-            directionOffset = Math.PI / 2;
-        } else if (keyPressed['d']) {
             directionOffset = -Math.PI / 2;
+        } else if (keyPressed['d']) {
+            directionOffset = Math.PI / 2;
         }
 
         return directionOffset;
