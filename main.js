@@ -158,6 +158,10 @@ function addLight() {
 	light.shadow.camera.right = 7;
 	light.shadow.camera.bottom = -7;
 
+	light.shadow.mapSize.width = 2048;
+	light.shadow.mapSize.height = 2048;
+	light.shadow.camera.far = 11;
+
 	const helper = new THREE.CameraHelper(light.shadow.camera);
 	scene.add(helper);
 
