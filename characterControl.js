@@ -33,6 +33,27 @@ export class CharacterControls {
         //console.log(this.toggleRun);
     }
 
+    getEmotion(keyPressed) {
+        var play = ''
+
+        if (keyPressed['1'])
+            play = 'Dance';
+        else if (keyPressed['2'])
+            play = 'Death';
+        else if (keyPressed['3'])
+            play = 'No';
+        else if (keyPressed['4'])
+            play = 'Yes';
+        else if (keyPressed['5'])
+            play = 'Wave';
+        else if (keyPressed['6'])
+            play = 'ThumbsUp';
+        else if (keyPressed[' '])
+            play = 'Jump';
+
+        return play;
+    }
+
     update(delta, keyPressed) {
         const directionPressed = ['a', 'd', 'w', 's'].some(key => keyPressed[key]);
         var play = '';
@@ -41,7 +62,11 @@ export class CharacterControls {
             play = 'Walking';
             if (this.toggleRun) play = 'Running';
         }
-        else play = 'Idle'
+
+        else if (['1', '2', '3', '4', '5', '6', ' '].some(key => keyPressed[key]))
+            play = this.getEmotion(keyPressed);
+
+        else play = 'Idle';
         //console.log(play);
 
         // Simple FSM
