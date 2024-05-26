@@ -61,6 +61,25 @@ export class CharacterControls {
         return play;
     }
 
+    getKey(play) {
+        var key = ''
+
+        if (play === 'Dance')
+            key = '1';
+        else if (play === 'Death')
+            key = '2';
+        else if (play === 'No')
+            key = '3';
+        else if (play === 'Yes')
+            key = '4';
+        else if (play === 'Wave')
+            key = '5';
+        else if (play === 'ThumbsUp')
+            key = '6';
+
+        return key;
+    }
+
     update(delta, keyPressed) {
         const directionPressed = ['a', 'd', 'w', 's', ' '].some(key => keyPressed[key]);
         var play = '';
