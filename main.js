@@ -114,7 +114,13 @@ function loadCharacter() {
 		mixer = new THREE.AnimationMixer(model);
 
 		animations.forEach((a) => {
-			actions.set(a.name, mixer.clipAction(a));
+			var action = mixer.clipAction(a);
+			if (!['Idle', 'Walking', 'Running'].some(name => name === a.name)) {
+				action.setLoop(THREE.LoopOnce);
+				action.clampWhenFinished = true;
+			}
+
+			actions.set(a.name, action);
 		});
 
 		actions.get('Idle').play();
