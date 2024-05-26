@@ -135,20 +135,32 @@ function loadCharacter() {
 function addControlKey() {
 
 	document.addEventListener('keydown', (event) => {
-		if (event.shiftKey && characterControls) {
-			characterControls.switchRunToggle();
+
+		if (!['a', 'd', 'w', 's', ' '].some(key => keyPressed[key]) &&
+			['1', '2', '3', '4', '5', '6'].some(key => event.key === key)) {
+			if (!characterControls.getIsEmoteAction()) {
+				keyPressed[event.key] = true;
+				characterControls.setIsEmoteAction(true);
+			}
 		}
-		else {
-			keyPressed[event.key.toLowerCase()] = true
+		else if (!['1', '2', '3', '4', '5', '6'].some(key => keyPressed[key])) {
+			if (event.shiftKey && characterControls) {
+				characterControls.switchRunToggle();
+			}
+			else {
+				keyPressed[event.key.toLowerCase()] = true;
+			}
 		}
 
-		//console.log(event.key);
+		console.log(keyPressed);
 	});
 
 	document.addEventListener('keyup', (event) => {
-		keyPressed[event.key.toLowerCase()] = false;
 
-		//console.log(event.key);
+		if (!['1', '2', '3', '4', '5', '6'].some(key => event.key === key)) {
+			keyPressed[event.key.toLowerCase()] = false;
+		}
+		console.log(keyPressed);
 	});
 
 }

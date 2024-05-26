@@ -20,6 +20,7 @@ export class CharacterControls {
         this.currentAction = currentAction;
 
         this.toggleRun = false;
+        this.isEmoteAction = false;
 
         this.actions.forEach((key, value) => {
             if (key == currentAction) {
@@ -31,6 +32,14 @@ export class CharacterControls {
     switchRunToggle() {
         this.toggleRun = !this.toggleRun;
         //console.log(this.toggleRun);
+    }
+
+    getIsEmoteAction() {
+        return this.isEmoteAction;
+    }
+
+    setIsEmoteAction(emotion) {
+        this.isEmoteAction = emotion;
     }
 
     getEmotion(keyPressed) {
