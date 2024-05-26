@@ -82,24 +82,33 @@ export class CharacterControls {
 
     update(delta, keyPressed) {
         const directionPressed = ['a', 'd', 'w', 's', ' '].some(key => keyPressed[key]);
+        const otherPressed = ['1', '2', '3', '4', '5', '6'].some(key => keyPressed[key]);
         var play = '';
 
         if (directionPressed) {
             if (!keyPressed[' ']) {
                 play = 'Walking';
-                if (this.toggleRun) play = 'Running';
+                if (this.toggleRun)
+                    play = 'Running';
             }
-            else play = 'Jump';
+            else
+                play = 'Jump';
         }
 
-        else if (['1', '2', '3', '4', '5', '6'].some(key => keyPressed[key]))
-            play = this.getEmotion(keyPressed);
+        else if (otherPressed) {
+            play = this.getAction(keyPressed);
+        }
 
         else play = 'Idle';
         //console.log(play);
 
         // Simple FSM
         if (this.currentAction != play) {
+            if (this.currentAction !== 'Idle' && otherPressed) {
+                this.isEmoteAction = false;
+                keyPressed[this.getKey(play)] = false;
+            }
+
             const toPlay = this.actions.get(play);
             const current = this.actions.get(this.currentAction);
 
