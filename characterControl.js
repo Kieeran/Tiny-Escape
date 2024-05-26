@@ -96,7 +96,7 @@ export class CharacterControls {
         }
 
         else if (otherPressed) {
-            play = this.getAction(keyPressed);
+            play = this.getEmotion(keyPressed);
         }
 
         else play = 'Idle';

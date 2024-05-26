@@ -122,10 +122,21 @@ function loadCharacter() {
 
 			actions.set(a.name, action);
 		});
-
 		actions.get('Idle').play();
-
 		scene.add(model);
+
+		mixer.addEventListener('finished', function (e) {
+			var play = characterControls.getEmotion(keyPressed);
+			if (e.action === actions.get(play) && characterControls.getIsEmoteAction()) {
+				setTimeout(() => {
+					actions.get(play).fadeOut(0.5);  // Fade out action2 trong 0.5 giây
+					actions.get('Idle').reset().fadeIn(0.5).play();  // Reset, fade in và play action1
+					characterControls.setIsEmoteAction(false);
+				}, 1000);
+				keyPressed[characterControls.getKey(play)] = false;
+				console.log(keyPressed);
+			}
+		});
 
 		characterControls = new CharacterControls(model, mixer, controls, camera, actions, 'Idle');
 
