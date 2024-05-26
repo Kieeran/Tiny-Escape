@@ -115,7 +115,7 @@ function loadCharacter() {
 
 		animations.forEach((a) => {
 			var action = mixer.clipAction(a);
-			if (!['Idle', 'Walking', 'Running'].some(name => name === a.name)) {
+			if (!['Idle', 'Walking', 'Running', 'Jump'].some(name => name === a.name)) {
 				action.setLoop(THREE.LoopOnce);
 				action.clampWhenFinished = true;
 			}

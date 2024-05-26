@@ -48,22 +48,23 @@ export class CharacterControls {
             play = 'Wave';
         else if (keyPressed['6'])
             play = 'ThumbsUp';
-        else if (keyPressed[' '])
-            play = 'Jump';
 
         return play;
     }
 
     update(delta, keyPressed) {
-        const directionPressed = ['a', 'd', 'w', 's'].some(key => keyPressed[key]);
+        const directionPressed = ['a', 'd', 'w', 's', ' '].some(key => keyPressed[key]);
         var play = '';
 
         if (directionPressed) {
-            play = 'Walking';
-            if (this.toggleRun) play = 'Running';
+            if (!keyPressed[' ']) {
+                play = 'Walking';
+                if (this.toggleRun) play = 'Running';
+            }
+            else play = 'Jump';
         }
 
-        else if (['1', '2', '3', '4', '5', '6', ' '].some(key => keyPressed[key]))
+        else if (['1', '2', '3', '4', '5', '6'].some(key => keyPressed[key]))
             play = this.getEmotion(keyPressed);
 
         else play = 'Idle';
