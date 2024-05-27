@@ -132,7 +132,7 @@ function loadCharacter() {
 					actions.get(play).fadeOut(0.5);  // Fade out action2 trong 0.5 giây
 					actions.get('Idle').reset().fadeIn(0.5).play();  // Reset, fade in và play action1
 					characterControls.setIsEmoteAction(false);
-				}, 1000);
+				},);
 				keyPressed[characterControls.getKey(play)] = false;
 				console.log(keyPressed);
 			}
@@ -147,14 +147,15 @@ function addControlKey() {
 
 	document.addEventListener('keydown', (event) => {
 
-		if (!['a', 'd', 'w', 's', ' '].some(key => keyPressed[key]) &&
-			['1', '2', '3', '4', '5', '6'].some(key => event.key === key)) {
+		if (['1', '2', '3', '4', '5', '6'].some(key => event.key === key) &&
+			!['a', 'd', 'w', 's', ' '].some(key => keyPressed[key])) {
 			if (!characterControls.getIsEmoteAction()) {
 				keyPressed[event.key] = true;
 				characterControls.setIsEmoteAction(true);
 			}
 		}
-		else if (!['1', '2', '3', '4', '5', '6'].some(key => keyPressed[key])) {
+		else if (!['1', '2', '3', '4', '5', '6'].some(key => keyPressed[key]) &&
+			!['1', '2', '3', '4', '5', '6'].some(key => event.key === key)) {
 			if (event.shiftKey && characterControls) {
 				characterControls.switchRunToggle();
 			}
