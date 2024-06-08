@@ -138,6 +138,17 @@ function loadFurniture() {
 		}, undefined, function (error) {
 			console.error(error);
 		});
+
+	//desk
+	loader.load(
+		'3D_Models/Furniture/desk/scene.gltf', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(-21.75, -2, 38);
+			model.rotation.set(0, Math.PI / 2, 0);
+		}, undefined, function (error) {
+			console.error(error);
+		});
 }
 
 function addControlKey() {
