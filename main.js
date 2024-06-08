@@ -149,6 +149,17 @@ function loadFurniture() {
 		}, undefined, function (error) {
 			console.error(error);
 		});
+
+	//bookshelf
+	loader.load(
+		'3D_Models/Furniture/bookshelf.glb', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.scale.set(2, 2, 3);
+			model.position.set(-7, 4, 0);
+		}, undefined, function (error) {
+			console.error(error);
+		});
 }
 
 function addControlKey() {
