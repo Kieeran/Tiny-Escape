@@ -36,6 +36,7 @@ function init() {
 
 	loader = new GLTFLoader();
 	loadRoom();
+	loadFurniture();
 
 	actions = new Map();
 	loadCharacter();
@@ -121,6 +122,19 @@ function loadRoom() {
 		'3D_Models/room/Bedroom.glb', function (gltf) {
 			var model = gltf.scene;
 			scene.add(model);
+		}, undefined, function (error) {
+			console.error(error);
+		});
+}
+
+function loadFurniture() {
+	//bed
+	loader.load(
+		'3D_Models/Furniture/bed/scene.gltf', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(4.5, -0.1, -8.5);
+			model.scale.set(0.3, 0.3, 0.3);
 		}, undefined, function (error) {
 			console.error(error);
 		});
