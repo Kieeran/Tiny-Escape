@@ -37,6 +37,7 @@ function init() {
 	loader = new GLTFLoader();
 	loadRoom();
 	loadFurniture();
+	loadBottles();
 
 	actions = new Map();
 	loadCharacter();
@@ -190,6 +191,10 @@ function loadFurniture() {
 		}, undefined, function (error) {
 			console.error(error);
 		});
+}
+
+function loadBottles() {
+
 }
 
 function addControlKey() {
