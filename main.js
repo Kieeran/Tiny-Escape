@@ -215,6 +215,18 @@ function loadBottles() {
 		}, undefined, function (error) {
 			console.error(error);
 		});
+
+	//potions_bottle
+	loader.load(
+		'3D_Models/Furniture/bottles/potions_bottle.glb', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(3.5, 1.7, -7);
+			model.scale.set(0.02, 0.02, 0.02);
+			model.rotation.set(3 * Math.PI / 4, 0, Math.PI / 2);
+		}, undefined, function (error) {
+			console.error(error);
+		});
 }
 
 function addControlKey() {
