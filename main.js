@@ -179,6 +179,17 @@ function loadFurniture() {
 		}, undefined, function (error) {
 			console.error(error);
 		});
+
+	//table
+	loader.load(
+		'3D_Models/Furniture/tea_table.glb', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(-4, 0, 7);
+			model.scale.set(0.12, 0.1, 0.12);
+		}, undefined, function (error) {
+			console.error(error);
+		});
 }
 
 function addControlKey() {
