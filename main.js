@@ -194,7 +194,16 @@ function loadFurniture() {
 }
 
 function loadBottles() {
-
+	//magic bottles
+	loader.load(
+		'3D_Models/Furniture/bottles/bottle_magic/scene.gltf', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(-7, 3, -6);
+			model.scale.set(0.3, 0.3, 0.3);
+		}, undefined, function (error) {
+			console.error(error);
+		});
 }
 
 function addControlKey() {
