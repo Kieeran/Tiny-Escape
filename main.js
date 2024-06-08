@@ -160,6 +160,25 @@ function loadFurniture() {
 		}, undefined, function (error) {
 			console.error(error);
 		});
+
+	//chair
+	loader.load(
+		'3D_Models/Furniture/kolton_rocking_chair_marl_grey.glb', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+
+			model.position.set(-6, 0, 10);
+			model.rotation.set(0, 3 * Math.PI / 4, 0);
+
+			var cloneModel = model.clone();
+			scene.add(cloneModel);
+
+			cloneModel.position.set(-2, 0, 10);
+			cloneModel.rotation.set(0, Math.PI, 0);
+
+		}, undefined, function (error) {
+			console.error(error);
+		});
 }
 
 function addControlKey() {
