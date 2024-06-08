@@ -204,6 +204,17 @@ function loadBottles() {
 		}, undefined, function (error) {
 			console.error(error);
 		});
+
+	//black bottles
+	loader.load(
+		'3D_Models/Furniture/bottles/small_bottle.glb', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(-4, 1.65, 6.75);
+			model.scale.set(0.4, 0.4, 0.4);
+		}, undefined, function (error) {
+			console.error(error);
+		});
 }
 
 function addControlKey() {
