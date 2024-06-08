@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bottle Magic
+* source:	https://sketchfab.com/3d-models/bottle-magic-2f68e6714b644df79d0305acb8f1263f
+* author:	osmar.edd (https://sketchfab.com/osmar.edd)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bottle Magic" (https://sketchfab.com/3d-models/bottle-magic-2f68e6714b644df79d0305acb8f1263f) by osmar.edd (https://sketchfab.com/osmar.edd) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
