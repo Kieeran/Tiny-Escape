@@ -35,7 +35,7 @@ function init() {
 	controls.update();
 
 	loader = new GLTFLoader();
-	loadModel();
+	loadRoom();
 
 	actions = new Map();
 	loadCharacter();
@@ -45,33 +45,6 @@ function init() {
 	clock = new THREE.Clock();
 	addLight();
 	animate();
-}
-
-function loadModel() {
-	loader.load('3D_Models/Floor/floor.gltf', function (gltf) {
-
-		var model = gltf.scene;
-
-		for (let i = -3; i < 4; i++) {
-			for (let j = -3; j < 4; j++) {
-
-				var cloneModel = model.clone();
-				cloneModel.position.set(i * 2, 0, j * 2);
-
-				cloneModel.traverse(function (part) {
-					if (part.isMesh)
-						part.receiveShadow = true;
-				});
-
-				scene.add(cloneModel);
-			}
-		}
-
-	}, function (xhr) {
-		console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-	}, function (error) {
-		console.log('An error happened');
-	});
 }
 
 // function loadCharacter() {
@@ -141,6 +114,16 @@ function loadCharacter() {
 		characterControls = new CharacterControls(model, mixer, controls, camera, actions, 'Idle');
 
 	});
+}
+
+function loadRoom() {
+	loader.load(
+		'3D_Models/room/Bedroom.glb', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+		}, undefined, function (error) {
+			console.error(error);
+		});
 }
 
 function addControlKey() {
