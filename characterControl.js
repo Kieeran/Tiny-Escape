@@ -138,16 +138,10 @@ export class CharacterControls {
 
             const velocity = this.currentAction == 'Running' ? this.runVelocity : this.walkVelocity;
 
-            const moveX = -this.moveDirection.x * velocity * delta;
-            const moveZ = -this.moveDirection.z * velocity * delta;
-
-            // this.model.position.x += moveX;
-            // this.model.position.z += moveZ;
-
             this.characterBody.velocity.x = -this.moveDirection.x * velocity
             this.characterBody.velocity.z = -this.moveDirection.z * velocity
 
-            this.updateCameraTarget(moveX, moveZ);
+            this.updateCameraTarget();
         }
         this.characterBody.quaternion.x = 0
         this.characterBody.quaternion.z = 0
@@ -162,13 +156,17 @@ export class CharacterControls {
         this.mixer.update(delta);
     }
 
-    updateCameraTarget(moveX, moveZ) {
-        this.camera.position.x += moveX;
-        this.camera.position.z += moveZ;
+    updateCameraTarget() {
+        this.camera.getWorldDirection(this.moveDirection);
+        this.moveDirection.normalize();
 
-        this.cameraTarget.x = this.model.position.x;
-        this.cameraTarget.y = this.model.position.y;
-        this.cameraTarget.z = this.model.position.z;
+        this.camera.position.x = this.characterBody.position.x - 5 * this.moveDirection.x;
+        this.camera.position.y = this.characterBody.position.y - 5 * this.moveDirection.y;
+        this.camera.position.z = this.characterBody.position.z - 5 * this.moveDirection.z;
+
+        this.cameraTarget.x = this.characterBody.position.x;
+        this.cameraTarget.y = this.characterBody.position.y;
+        this.cameraTarget.z = this.characterBody.position.z;
         this.controls.target = this.cameraTarget;
     }
 
