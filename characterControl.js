@@ -11,12 +11,13 @@ export class CharacterControls {
     runVelocity = 6;
     walkVelocity = 3;
 
-    constructor(model, mixer, orbitControl, camera, actions, currentAction) {
+    constructor(model, mixer, orbitControl, camera, actions, characterBody, currentAction) {
         this.model = model;
         this.mixer = mixer;
         this.controls = orbitControl;
         this.camera = camera;
         this.actions = actions;
+        this.characterBody = characterBody;
         this.currentAction = currentAction;
 
         this.toggleRun = false;

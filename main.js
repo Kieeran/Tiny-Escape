@@ -128,8 +128,7 @@ function loadCharacter() {
 			}
 		});
 
-		characterControls = new CharacterControls(model, mixer, controls, camera, actions, 'Idle');
-
+		characterControls = new CharacterControls(model, mixer, controls, camera, actions, characterBody, 'Idle');
 	});
 }
 
