@@ -264,24 +264,35 @@ function addControlKey() {
 }
 
 function addLight() {
-	const light = new THREE.DirectionalLight(0xffffff, 1);
-	light.castShadow = true;
-	light.position.y = 10;
-	scene.add(light);
+	// const light = new THREE.DirectionalLight(0xffffff, 1);
+	// light.castShadow = true;
+	// light.position.y = 10;
+	// scene.add(light);
 
-	light.shadow.camera.top = 7;
-	light.shadow.camera.left = -7;
-	light.shadow.camera.right = 7;
-	light.shadow.camera.bottom = -7;
+	// light.shadow.camera.top = 7;
+	// light.shadow.camera.left = -7;
+	// light.shadow.camera.right = 7;
+	// light.shadow.camera.bottom = -7;
 
-	light.shadow.mapSize.width = 2048;
-	light.shadow.mapSize.height = 2048;
-	light.shadow.camera.far = 11;
+	// light.shadow.mapSize.width = 2048;
+	// light.shadow.mapSize.height = 2048;
+	// light.shadow.camera.far = 11;
 
-	const helper = new THREE.CameraHelper(light.shadow.camera);
-	scene.add(helper);
+	// const helper = new THREE.CameraHelper(light.shadow.camera);
+	// scene.add(helper);
 
-	scene.add(new THREE.AmbientLight(0xffffff, 0.2));
+	const pointLight = new THREE.PointLight(0xFFFFFF);
+	pointLight.position.set(0, 10, -6);
+	scene.add(pointLight);
+	pointLight.power = 1000
+	pointLight.shadow.mapSize.width = 1024;
+	pointLight.shadow.mapSize.height = 1024;
+	pointLight.castShadow = true
+
+	const pointLightHelper = new THREE.PointLightHelper(pointLight, 1);
+	scene.add(pointLightHelper);
+
+	scene.add(new THREE.AmbientLight(0xffffff, 0.09));
 }
 
 function animate() {
