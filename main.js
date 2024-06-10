@@ -25,7 +25,7 @@ function init() {
 		1000
 	);
 
-	camera.position.set(0, 2, 5);
+	camera.position.set(0, 0.2, 1);
 
 	renderer = new THREE.WebGLRenderer({
 		alpha: true,
@@ -98,7 +98,7 @@ function loadCharacter() {
 				part.castShadow = true;
 		});
 
-		model.scale.set(0.55, 0.55, 0.55);
+		model.scale.set(0.1, 0.1, 0.1);
 
 		animations = gltf.animations;
 		mixer = new THREE.AnimationMixer(model);
@@ -309,10 +309,10 @@ function addObjectBody() {
 
 	characterBody = new CANNON.Body({
 		mass: 100,
-		shape: new CANNON.Cylinder(0.8, 0.8, 2.3, 20),
+		shape: new CANNON.Cylinder(0.15, 0.15, 0.44, 20),
 		angularDamping: 0.95,
 	});
-	characterBody.position.set(0, 1.15, 0);
+	characterBody.position.set(0, 0.2, 0);
 	physicsWorld.addBody(characterBody);
 
 	const material = new CANNON.Material("defaultMaterial");

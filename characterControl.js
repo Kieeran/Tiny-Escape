@@ -9,8 +9,8 @@ export class CharacterControls {
     cameraTarget = new THREE.Vector3();
 
     fadeDuration = 0.2;
-    runVelocity = 6;
-    walkVelocity = 3;
+    runVelocity = 2;
+    walkVelocity = 1;
 
     constructor(model, mixer, orbitControl, camera, actions, characterBody, currentAction) {
         this.model = model;
@@ -148,7 +148,7 @@ export class CharacterControls {
 
         var origin = new CANNON.Vec3(
             this.characterBody.position.x,
-            this.characterBody.position.y - 1.15,
+            this.characterBody.position.y - 0.218,
             this.characterBody.position.z
         );
         this.model.position.copy(origin);
@@ -160,9 +160,11 @@ export class CharacterControls {
         this.camera.getWorldDirection(this.moveDirection);
         this.moveDirection.normalize();
 
-        this.camera.position.x = this.characterBody.position.x - 5 * this.moveDirection.x;
-        this.camera.position.y = this.characterBody.position.y - 5 * this.moveDirection.y;
-        this.camera.position.z = this.characterBody.position.z - 5 * this.moveDirection.z;
+        var distance = 1;
+
+        this.camera.position.x = this.characterBody.position.x - distance * this.moveDirection.x;
+        this.camera.position.y = this.characterBody.position.y - distance * this.moveDirection.y;
+        this.camera.position.z = this.characterBody.position.z - distance * this.moveDirection.z;
 
         this.cameraTarget.x = this.characterBody.position.x;
         this.cameraTarget.y = this.characterBody.position.y;
