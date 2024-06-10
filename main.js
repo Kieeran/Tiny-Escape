@@ -3,6 +3,7 @@ import * as CANNON from 'cannon-es'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { CharacterControls } from './characterControl';
+import CannonDebugger from 'cannon-es-debugger';
 
 let scene, camera, renderer, controls;
 let loader;
@@ -10,7 +11,7 @@ let actions, animations, mixer, clock;
 let mixerUpdateDelta;
 let keyPressed = {};
 let characterControls;
-let physicsWorld;
+let physicsWorld, cannonDebugger;
 
 init();
 
@@ -59,6 +60,7 @@ function initPhysics() {
 	physicsWorld = new CANNON.World({
 		gravity: new CANNON.Vec3(0, -9.82, 0), // m/s²
 	})
+	cannonDebugger = new CannonDebugger(scene, physicsWorld);
 }
 
 // function loadCharacter() {
@@ -262,7 +264,7 @@ function addControlKey() {
 			}
 		}
 
-		console.log(keyPressed);
+		//console.log(keyPressed);
 	});
 
 	document.addEventListener('keyup', (event) => {
@@ -270,7 +272,7 @@ function addControlKey() {
 		if (!['1', '2', '3', '4', '5', '6'].some(key => event.key === key)) {
 			keyPressed[event.key.toLowerCase()] = false;
 		}
-		console.log(keyPressed);
+		//console.log(keyPressed);
 	});
 
 }
@@ -323,6 +325,7 @@ function animate() {
 	mixerUpdateDelta = clock.getDelta();
 
 	controls.update();
+	cannonDebugger.update();
 
 	if (characterControls) {
 		characterControls.update(mixerUpdateDelta, keyPressed);
