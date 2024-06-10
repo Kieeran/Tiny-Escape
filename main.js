@@ -12,6 +12,7 @@ let mixerUpdateDelta;
 let keyPressed = {};
 let characterControls;
 let physicsWorld, cannonDebugger;
+let characterBody;
 
 init();
 
@@ -282,9 +283,15 @@ function addObjectBody() {
 		type: CANNON.Body.STATIC,
 		shape: new CANNON.Plane(),
 	});
-
 	groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0)
 	physicsWorld.addBody(groundBody);
+
+	characterBody = new CANNON.Body({
+		mass: 100,
+		shape: new CANNON.Cylinder(0.8, 0.8, 2.3, 20),
+	});
+	characterBody.position.set(0, 1.15, 0);
+	physicsWorld.addBody(characterBody);
 }
 
 function addLight() {
