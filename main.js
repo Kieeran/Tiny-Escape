@@ -248,7 +248,7 @@ function addControlKey() {
 	document.addEventListener('keydown', (event) => {
 
 		if (['1', '2', '3', '4', '5', '6'].some(key => event.key === key) &&
-			!['a', 'd', 'w', 's', ' '].some(key => keyPressed[key])) {
+			!['a', 'd', 'w', 's'].some(key => keyPressed[key])) {
 			if (!characterControls.getIsEmoteAction()) {
 				keyPressed[event.key] = true;
 				characterControls.setIsEmoteAction(true);
