@@ -291,6 +291,22 @@ function addObjectBody() {
 	});
 	characterBody.position.set(0, 1.15, 0);
 	physicsWorld.addBody(characterBody);
+
+	var boxBody = new CANNON.Body({
+		mass: 5,
+		shape: new CANNON.Box(new CANNON.Vec3(1, 1, 1)),
+		friction: 0,
+		restitution: 0
+	});
+	boxBody.position.set(4, 2, 0);
+	physicsWorld.addBody(boxBody);
+
+	var planeBody = new CANNON.Body({
+		type: CANNON.Body.STATIC,
+		shape: new CANNON.Box(new CANNON.Vec3(2, 0.75, 4)),
+	});
+	planeBody.position.set(-4, 0.75, 0);
+	physicsWorld.addBody(planeBody);
 }
 
 function addLight() {
