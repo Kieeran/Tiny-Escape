@@ -264,6 +264,9 @@ function addControlKey() {
 			}
 		}
 
+		if (keyPressed[' '] && Math.abs(characterBody.velocity.y) < 0.1)
+			characterBody.velocity.y = 7
+
 		//console.log(keyPressed);
 	});
 
@@ -272,6 +275,9 @@ function addControlKey() {
 		if (!['1', '2', '3', '4', '5', '6'].some(key => event.key === key)) {
 			keyPressed[event.key.toLowerCase()] = false;
 		}
+
+		if (!keyPressed['w'] && !keyPressed['s']) characterBody.velocity.z = 0
+		if (!keyPressed['a'] && !keyPressed['d']) characterBody.velocity.x = 0
 		//console.log(keyPressed);
 	});
 
