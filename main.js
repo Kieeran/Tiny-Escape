@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import * as CANNON from 'cannon-es'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { CharacterControls } from './characterControl';
@@ -34,6 +35,8 @@ function init() {
 	controls = new OrbitControls(camera, renderer.domElement);
 	controls.update();
 
+	initPhysics();
+
 	loader = new GLTFLoader();
 	loadRoom();
 	loadFurniture();
@@ -47,6 +50,12 @@ function init() {
 	clock = new THREE.Clock();
 	addLight();
 	animate();
+}
+
+function initPhysics() {
+	const physicsWorld = new CANNON.World({
+		gravity: new CANNON.Vec3(0, -9.82, 0), // m/s²
+	})
 }
 
 // function loadCharacter() {
