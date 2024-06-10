@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import * as CANNON from 'cannon-es'
 
 export class CharacterControls {
 
@@ -140,11 +141,23 @@ export class CharacterControls {
             const moveX = -this.moveDirection.x * velocity * delta;
             const moveZ = -this.moveDirection.z * velocity * delta;
 
-            this.model.position.x += moveX;
-            this.model.position.z += moveZ;
+            // this.model.position.x += moveX;
+            // this.model.position.z += moveZ;
+
+            this.characterBody.velocity.x = -this.moveDirection.x * velocity
+            this.characterBody.velocity.z = -this.moveDirection.z * velocity
 
             this.updateCameraTarget(moveX, moveZ);
         }
+        this.characterBody.quaternion.x = 0
+        this.characterBody.quaternion.z = 0
+
+        var origin = new CANNON.Vec3(
+            this.characterBody.position.x,
+            this.characterBody.position.y - 1.15,
+            this.characterBody.position.z
+        );
+        this.model.position.copy(origin);
 
         this.mixer.update(delta);
     }

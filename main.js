@@ -45,12 +45,12 @@ function init() {
 	loadFurniture();
 	loadBottles();
 
+	addObjectBody();
+
 	actions = new Map();
 	loadCharacter();
 
 	addControlKey();
-
-	addObjectBody();
 
 	clock = new THREE.Clock();
 	addLight();
@@ -61,7 +61,7 @@ function initPhysics() {
 	physicsWorld = new CANNON.World({
 		gravity: new CANNON.Vec3(0, -9.82, 0), // m/s²
 	})
-	cannonDebugger = new CannonDebugger(scene, physicsWorld);
+	cannonDebugger = new CannonDebugger(scene, physicsWorld, {});
 }
 
 // function loadCharacter() {
@@ -332,6 +332,7 @@ function animate() {
 
 	controls.update();
 	cannonDebugger.update();
+	physicsWorld.fixedStep();
 
 	if (characterControls) {
 		characterControls.update(mixerUpdateDelta, keyPressed);
