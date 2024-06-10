@@ -10,6 +10,7 @@ let actions, animations, mixer, clock;
 let mixerUpdateDelta;
 let keyPressed = {};
 let characterControls;
+let physicsWorld;
 
 init();
 
@@ -47,13 +48,15 @@ function init() {
 
 	addControlKey();
 
+	addObjectBody();
+
 	clock = new THREE.Clock();
 	addLight();
 	animate();
 }
 
 function initPhysics() {
-	const physicsWorld = new CANNON.World({
+	physicsWorld = new CANNON.World({
 		gravity: new CANNON.Vec3(0, -9.82, 0), // m/s²
 	})
 }
@@ -270,6 +273,16 @@ function addControlKey() {
 		console.log(keyPressed);
 	});
 
+}
+
+function addObjectBody() {
+	var groundBody = new CANNON.Body({
+		type: CANNON.Body.STATIC,
+		shape: new CANNON.Plane(),
+	});
+
+	groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0)
+	physicsWorld.addBody(groundBody);
 }
 
 function addLight() {
