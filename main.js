@@ -18,7 +18,7 @@ let physicsWorld, cannonDebugger;
 let characterBody;
 
 let models = [];
-let toy_chair, spinner, toy_car;
+let toy_chair, spinner, toy_car, toy_truck;
 
 let gui;
 
@@ -404,9 +404,11 @@ function loadToys() {
 					part.castShadow = true;
 				}
 			});
+			models.push(model);
 		}, undefined, function (error) {
 			console.error(error);
 		});
+
 	//the_toy_chair
 	loader.load(
 		'3D_Models/Toys/toy_chair.glb', function (gltf) {
@@ -718,6 +720,54 @@ function addObjectBody() {
 
 	toy_car.position.set(1, 3, 2);
 	physicsWorld.addBody(toy_car);
+
+	toy_truck = new CANNON.Body({
+		mass: 5,
+		shape: new CANNON.Box(new CANNON.Vec3(0.2, 0.1, 0.8))
+	})
+
+	toy_truck.addShape(
+		new CANNON.Box(new CANNON.Vec3(0.2, 0.14, 0.43)),
+		new CANNON.Vec3(0, 0.24, -0.34),
+	)
+
+	toy_truck.addShape(
+		new CANNON.Box(new CANNON.Vec3(0.15, 0.1, 0.123)),
+		new CANNON.Vec3(0, 0.2, 0.23),
+	)
+
+	toy_truck.addShape(
+		new CANNON.Sphere(0.1),
+		new CANNON.Vec3(0.18, -0.08, 0.53),
+	)
+
+	toy_truck.addShape(
+		new CANNON.Sphere(0.1),
+		new CANNON.Vec3(-0.18, -0.08, 0.53),
+	)
+
+	toy_truck.addShape(
+		new CANNON.Sphere(0.1),
+		new CANNON.Vec3(0.18, -0.08, -0.58),
+	)
+
+	toy_truck.addShape(
+		new CANNON.Sphere(0.1),
+		new CANNON.Vec3(-0.18, -0.08, -0.58),
+	)
+
+	toy_truck.addShape(
+		new CANNON.Sphere(0.1),
+		new CANNON.Vec3(0.18, -0.08, -0.35),
+	)
+
+	toy_truck.addShape(
+		new CANNON.Sphere(0.1),
+		new CANNON.Vec3(-0.18, -0.08, -0.35),
+	)
+
+	toy_truck.position.set(0, 3, 5);
+	physicsWorld.addBody(toy_truck)
 }
 
 function addLight() {
@@ -764,11 +814,14 @@ function animate() {
 	models[0].position.copy(spinner.position);
 	models[0].quaternion.copy(spinner.quaternion);
 
-	models[1].position.copy(toy_chair.position);
-	models[1].quaternion.copy(toy_chair.quaternion);
+	models[1].position.copy(toy_truck.position);
+	models[1].quaternion.copy(toy_truck.quaternion);
 
-	models[2].position.copy(toy_car.position);
-	models[2].quaternion.copy(toy_car.quaternion);
+	models[2].position.copy(toy_chair.position);
+	models[2].quaternion.copy(toy_chair.quaternion);
+
+	models[3].position.copy(toy_car.position);
+	models[3].quaternion.copy(toy_car.quaternion);
 
 	updateGui();
 
