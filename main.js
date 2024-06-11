@@ -17,6 +17,7 @@ let characterControls;
 let physicsWorld, cannonDebugger;
 let characterBody;
 
+let body;
 let gui;
 
 init();
@@ -58,6 +59,7 @@ function init() {
 	loadCharacter();
 
 	addControlKey();
+	datGui();
 
 	clock = new THREE.Clock();
 	addLight();
@@ -74,6 +76,13 @@ function initPhysics() {
 function initGui() {
 	gui = new GUI();
 }
+
+function datGui() {
+	gui.add(body.position, 'x', -20, 20).name('Position x')
+	gui.add(body.position, 'y', -20, 20).name('Position y')
+	gui.add(body.position, 'z', -20, 20).name('Position z')
+}
+
 
 // function loadCharacter() {
 // 	loader.load('3D_Models/Character/Soldier.glb', function (gltf) {
@@ -543,6 +552,13 @@ function addObjectBody() {
 	objectsFurniture_body.forEach(function (item, index) {
 		physicsWorld.addBody(item);
 	})
+
+	body = new CANNON.Body({
+		type: CANNON.Body.STATIC,
+		shape: new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 0.5)),
+	});
+	body.position.set(0, 1, 0);
+	physicsWorld.addBody(body);
 }
 
 function addLight() {
