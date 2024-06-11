@@ -1,6 +1,7 @@
+import { GUI } from 'dat.gui';
+import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
 import CannonDebugger from 'cannon-es-debugger';
-import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { CharacterControls } from './characterControl';
@@ -15,6 +16,8 @@ let keyPressed = {};
 let characterControls;
 let physicsWorld, cannonDebugger;
 let characterBody;
+
+let gui;
 
 init();
 
@@ -41,6 +44,7 @@ function init() {
 	controls.update();
 
 	initPhysics();
+	initGui();
 
 	loader = new GLTFLoader();
 	loadRoom();
@@ -65,6 +69,10 @@ function initPhysics() {
 		gravity: new CANNON.Vec3(0, -9.82, 0), // m/s²
 	})
 	cannonDebugger = new CannonDebugger(scene, physicsWorld, {});
+}
+
+function initGui() {
+	gui = new GUI();
 }
 
 // function loadCharacter() {
