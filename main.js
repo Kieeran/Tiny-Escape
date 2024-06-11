@@ -18,7 +18,7 @@ let physicsWorld, cannonDebugger;
 let characterBody;
 
 let models = [];
-let toy_chair;
+let toy_chair, spinner;
 
 let gui;
 
@@ -379,16 +379,19 @@ function loadToys() {
 		'3D_Models/Toys/spinner/scene.gltf', function (gltf) {
 			var model = gltf.scene;
 			scene.add(model);
-			model.position.set(2, 2, 0);
-			model.scale.set(0.1, 0.1, 0.1);
+			model.position.set(0, 2, 0);
+			model.scale.set(0.05, 0.05, 0.05);
+			model.rotation.set(-Math.PI / 2, 0, 0);
 			model.traverse(function (part) {
 				if (part.isMesh) {
 					part.castShadow = true;
 				}
 			});
+			models.push(model);
 		}, undefined, function (error) {
 			console.error(error);
 		});
+
 	//the_toy_truck
 	loader.load(
 		'3D_Models/Toys/the_toy_truck/scene.gltf', function (gltf) {
@@ -657,6 +660,29 @@ function addObjectBody() {
 
 	physicsWorld.addBody(toy_chair);
 	toy_chair.position.set(2, 5, 0);
+
+	spinner = new CANNON.Body({
+		mass: 5,
+		shape: new CANNON.Cylinder(0.06, 0.06, 0.06, 14)
+	})
+
+	spinner.addShape(
+		new CANNON.Cylinder(0.06, 0.06, 0.02, 14),
+		new CANNON.Vec3(0, 0, 0.15),
+	)
+
+	spinner.addShape(
+		new CANNON.Cylinder(0.06, 0.06, 0.02, 14),
+		new CANNON.Vec3(0.13, 0, -0.07),
+	)
+
+	spinner.addShape(
+		new CANNON.Cylinder(0.06, 0.06, 0.02, 14),
+		new CANNON.Vec3(-0.13, 0, -0.07),
+	)
+
+	spinner.position.set(-2, 3, 0)
+	physicsWorld.addBody(spinner);
 }
 
 function addLight() {
@@ -700,8 +726,13 @@ function animate() {
 	cannonDebugger.update();
 	physicsWorld.fixedStep();
 
-	models[0].position.copy(toy_chair.position);
-	models[0].quaternion.copy(toy_chair.quaternion);
+	models[0].position.copy(spinner.position);
+	models[0].quaternion.copy(spinner.quaternion);
+
+	models[1].position.copy(toy_chair.position);
+	models[1].quaternion.copy(toy_chair.quaternion);
+
+
 
 	updateGui();
 
