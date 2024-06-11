@@ -434,7 +434,7 @@ function loadToys() {
 		'3D_Models/Toys/toy_dinosaur.glb', function (gltf) {
 			var model = gltf.scene;
 			scene.add(model);
-			model.position.set(-4, 1, 0);
+			model.position.set(-7, 8.3, -3);
 			model.scale.set(0.3, 0.3, 0.3);
 			model.traverse(function (part) {
 				if (part.isMesh) {
