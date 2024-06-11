@@ -469,6 +469,13 @@ export function Furniture_body() {
     chair_leg_horizontal8.quaternion.setFromEuler(78 * Math.PI / 180, 0, 0);
     objectsFurniture_body.push(chair_leg_horizontal8);
 
+    var black_bottle = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.2, 0.3, 0.2)),
+    });
+    black_bottle.position.set(-4, 2, 6.75);
+    objectsFurniture_body.push(black_bottle);
+
     return objectsFurniture_body;
 
 }
