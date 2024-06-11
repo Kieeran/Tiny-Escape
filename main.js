@@ -224,6 +224,51 @@ function loadToys() {
 		}, undefined, function (error) {
 			console.error(error);
 		});
+	//motorbike
+	loader.load(
+		'3D_Models/Toys/motorcycle/scene.gltf', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(3.5, 0, 0);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					part.castShadow = true;
+				}
+			});
+		}, undefined, function (error) {
+			console.error(error);
+		});
+
+	//spinner
+	loader.load(
+		'3D_Models/Toys/spinner/scene.gltf', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(2, 2, 0);
+			model.scale.set(0.1, 0.1, 0.1);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					part.castShadow = true;
+				}
+			});
+		}, undefined, function (error) {
+			console.error(error);
+		});
+	//the_toy_truck
+	loader.load(
+		'3D_Models/Toys/the_toy_truck/scene.gltf', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(1, 1, 0);
+			model.scale.set(0.1, 0.1, 0.1);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					part.castShadow = true;
+				}
+			});
+		}, undefined, function (error) {
+			console.error(error);
+		});
 
 }
 
