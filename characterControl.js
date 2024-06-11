@@ -1,5 +1,5 @@
+import * as CANNON from 'cannon-es';
 import * as THREE from 'three';
-import * as CANNON from 'cannon-es'
 
 export class CharacterControls {
 
