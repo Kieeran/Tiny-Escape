@@ -18,7 +18,7 @@ let physicsWorld, cannonDebugger;
 let characterBody;
 
 let models = [];
-let toy_chair, spinner;
+let toy_chair, spinner, toy_car;
 
 let gui;
 
@@ -428,15 +428,17 @@ function loadToys() {
 		'3D_Models/Toys/the_toy_car.glb', function (gltf) {
 			var model = gltf.scene;
 			scene.add(model);
-			model.position.set(-4, 1, 0);
+			model.position.set(0, 3, 0);
 			model.traverse(function (part) {
 				if (part.isMesh) {
 					part.castShadow = true;
 				}
 			});
+			models.push(model);
 		}, undefined, function (error) {
 			console.error(error);
 		});
+
 	//dinosaur
 	loader.load(
 		'3D_Models/Toys/toy_dinosaur.glb', function (gltf) {
@@ -683,6 +685,39 @@ function addObjectBody() {
 
 	spinner.position.set(-2, 3, 0)
 	physicsWorld.addBody(spinner);
+
+	toy_car = new CANNON.Body({
+		mass: 5,
+		shape: new CANNON.Box(new CANNON.Vec3(0.3, 0.1, 0.95))
+	})
+
+	toy_car.addShape(
+		new CANNON.Sphere(0.095),
+		new CANNON.Vec3(0.3, -0.12, 0.64),
+	)
+
+	toy_car.addShape(
+		new CANNON.Sphere(0.095),
+		new CANNON.Vec3(-0.3, -0.12, 0.64),
+	)
+
+	toy_car.addShape(
+		new CANNON.Sphere(0.095),
+		new CANNON.Vec3(0.3, -0.12, -0.64),
+	)
+
+	toy_car.addShape(
+		new CANNON.Sphere(0.095),
+		new CANNON.Vec3(-0.3, -0.12, -0.64),
+	)
+
+	toy_car.addShape(
+		new CANNON.Box(new CANNON.Vec3(0.31, 0.13, 0.22)),
+		new CANNON.Vec3(0, 0.22, -0.06),
+	)
+
+	toy_car.position.set(1, 3, 2);
+	physicsWorld.addBody(toy_car);
 }
 
 function addLight() {
@@ -732,7 +767,8 @@ function animate() {
 	models[1].position.copy(toy_chair.position);
 	models[1].quaternion.copy(toy_chair.quaternion);
 
-
+	models[2].position.copy(toy_car.position);
+	models[2].quaternion.copy(toy_car.quaternion);
 
 	updateGui();
 
