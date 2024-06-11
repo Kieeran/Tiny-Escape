@@ -360,7 +360,8 @@ function loadToys() {
 		'3D_Models/Toys/motorcycle/scene.gltf', function (gltf) {
 			var model = gltf.scene;
 			scene.add(model);
-			model.position.set(3.5, 0, 0);
+			model.scale.set(0.8, 0.8, 0.8)
+			model.position.set(-7, 4.3, 0);
 			model.traverse(function (part) {
 				if (part.isMesh) {
 					part.castShadow = true;
