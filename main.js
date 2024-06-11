@@ -100,16 +100,16 @@ function datGui() {
 	gui.add(scaleBody, 'y', -20, 20).name('Scale y')
 	gui.add(scaleBody, 'z', -20, 20).name('Scale z')
 
-	gui.add(rotateBody, 'x', -5, 5).name('Rotate x')
-	gui.add(rotateBody, 'y', -5, 5).name('Rotate y')
-	gui.add(rotateBody, 'z', -5, 5).name('Rotate z')
+	gui.add(rotateBody, 'x', 0, 360).name('Rotate x')
+	gui.add(rotateBody, 'y', 0, 360).name('Rotate y')
+	gui.add(rotateBody, 'z', 0, 360).name('Rotate z')
 }
 
 function updateGui() {
 	body.quaternion.setFromEuler(
-		rotateBody.x,
-		rotateBody.y,
-		rotateBody.z,
+		angleToRad(rotateBody.x),
+		angleToRad(rotateBody.y),
+		angleToRad(rotateBody.z),
 	)
 	body.removeShape(shape);
 	shape = new CANNON.Box(new CANNON.Vec3(
@@ -118,6 +118,10 @@ function updateGui() {
 		scaleBody.z
 	))
 	body.addShape(shape);
+}
+
+function angleToRad(angle) {
+	return angle * Math.PI / 180;
 }
 
 // function loadCharacter() {
