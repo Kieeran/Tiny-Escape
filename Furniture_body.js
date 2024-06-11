@@ -476,6 +476,96 @@ export function Furniture_body() {
     black_bottle.position.set(-4, 2, 6.75);
     objectsFurniture_body.push(black_bottle);
 
+    //shelf
+    var shelf_back = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(4.5, 2.2, 0.01)),
+    });
+    shelf_back.position.set(-7.78, 6.2, 0);
+    shelf_back.quaternion.setFromEuler(0, Math.PI / 2, 0);
+    objectsFurniture_body.push(shelf_back);
+
+    var shelf_under = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.8, 4.5, 0.01)),
+    });
+    shelf_under.position.set(-7, 4, 0);
+    shelf_under.quaternion.setFromEuler(Math.PI / 2, 0, 0);
+    objectsFurniture_body.push(shelf_under);
+
+    var shelf_top = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.8, 4.5, 0.01)),
+    });
+    shelf_top.position.set(-7, 8.25, 0);
+    shelf_top.quaternion.setFromEuler(Math.PI / 2, 0, 0);
+    objectsFurniture_body.push(shelf_top);
+
+    var shelf_middle = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.8, 4.5, 0.01)),
+    });
+    shelf_middle.position.set(-7, 5.6, 0);
+    shelf_middle.quaternion.setFromEuler(Math.PI / 2, 0, 0);
+    objectsFurniture_body.push(shelf_middle);
+
+    var shelf_middle1 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.8, 4.5, 0.01)),
+    });
+    shelf_middle1.position.set(-7, 7, 0);
+    shelf_middle1.quaternion.setFromEuler(Math.PI / 2, 0, 0);
+    objectsFurniture_body.push(shelf_middle1);
+
+    var shelf_middle2 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.8, 0.6, 0.06)),
+    });
+    shelf_middle2.position.set(-7.1, 7.6, 1.67);
+    objectsFurniture_body.push(shelf_middle2);
+
+    var shelf_middle3 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.8, 0.6, 0.06)),
+    });
+    shelf_middle3.position.set(-7.1, 7.6, -1.67);
+    objectsFurniture_body.push(shelf_middle3);
+
+    var shelf_middle4 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.8, 0.6, 0.06)),
+    });
+    shelf_middle4.position.set(-7.1, 6.3, 0);
+    objectsFurniture_body.push(shelf_middle4);
+
+    var shelf_middle5 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.8, 0.6, 0.06)),
+    });
+    shelf_middle5.position.set(-7.1, 5, 1.67);
+    objectsFurniture_body.push(shelf_middle5);
+
+    var shelf_middle6 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.8, 0.6, 0.06)),
+    });
+    shelf_middle6.position.set(-7.1, 5, -1.67);
+    objectsFurniture_body.push(shelf_middle6);
+
+    var shelf_right = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.8, 2.2, 0.01)),
+    });
+    shelf_right.position.set(-7, 6.2, -4.5);
+    objectsFurniture_body.push(shelf_right);
+
+    var shelf_left = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.8, 2.2, 0.01)),
+    });
+    shelf_left.position.set(-7, 6.2, 4.5);
+    objectsFurniture_body.push(shelf_left);
+
     return objectsFurniture_body;
 
 }
