@@ -17,8 +17,17 @@ let characterControls;
 let physicsWorld, cannonDebugger;
 let characterBody;
 
-let body;
 let gui;
+
+let body;
+let shape;
+
+let scaleBody = ({
+	x: 0.5,
+	y: 0.5,
+	z: 0.5
+})
+
 let rotateBody = ({
 	x: 0,
 	y: 0,
@@ -87,6 +96,10 @@ function datGui() {
 	gui.add(body.position, 'y', -20, 20).name('Position y')
 	gui.add(body.position, 'z', -20, 20).name('Position z')
 
+	gui.add(scaleBody, 'x', -20, 20).name('Scale x')
+	gui.add(scaleBody, 'y', -20, 20).name('Scale y')
+	gui.add(scaleBody, 'z', -20, 20).name('Scale z')
+
 	gui.add(rotateBody, 'x', -5, 5).name('Rotate x')
 	gui.add(rotateBody, 'y', -5, 5).name('Rotate y')
 	gui.add(rotateBody, 'z', -5, 5).name('Rotate z')
@@ -98,6 +111,13 @@ function updateGui() {
 		rotateBody.y,
 		rotateBody.z,
 	)
+	body.removeShape(shape);
+	shape = new CANNON.Box(new CANNON.Vec3(
+		scaleBody.x,
+		scaleBody.y,
+		scaleBody.z
+	))
+	body.addShape(shape);
 }
 
 // function loadCharacter() {
@@ -569,9 +589,10 @@ function addObjectBody() {
 		physicsWorld.addBody(item);
 	})
 
+	shape = new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 0.5));
 	body = new CANNON.Body({
 		type: CANNON.Body.STATIC,
-		shape: new CANNON.Box(new CANNON.Vec3(0.5, 0.5, 0.5)),
+		shape: shape,
 	});
 	body.position.set(0, 1, 0);
 	physicsWorld.addBody(body);
