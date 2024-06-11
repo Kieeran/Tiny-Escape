@@ -180,6 +180,12 @@ function loadFurniture() {
 			scene.add(model);
 			model.position.set(4.5, -0.1, -8.5);
 			model.scale.set(0.3, 0.3, 0.3);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					// part.receiveShadow = true;
+					part.castShadow = true;
+				}
+			});
 		}, undefined, function (error) {
 			console.error(error);
 		});
@@ -191,6 +197,12 @@ function loadFurniture() {
 			scene.add(model);
 			model.position.set(-21.75, -2, 38);
 			model.rotation.set(0, Math.PI / 2, 0);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					// part.receiveShadow = true;
+					part.castShadow = true;
+				}
+			});
 		}, undefined, function (error) {
 			console.error(error);
 		});
@@ -202,6 +214,12 @@ function loadFurniture() {
 			scene.add(model);
 			model.scale.set(2, 2, 3);
 			model.position.set(-7, 4, 0);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					// part.receiveShadow = true;
+					part.castShadow = true;
+				}
+			});
 		}, undefined, function (error) {
 			console.error(error);
 		});
@@ -214,6 +232,12 @@ function loadFurniture() {
 
 			model.position.set(-6, 0, 10);
 			model.rotation.set(0, 3 * Math.PI / 4, 0);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					// part.receiveShadow = true;
+					part.castShadow = true;
+				}
+			});
 
 			var cloneModel = model.clone();
 			scene.add(cloneModel);
@@ -232,6 +256,12 @@ function loadFurniture() {
 			scene.add(model);
 			model.position.set(-4, 0, 7);
 			model.scale.set(0.12, 0.1, 0.12);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					// part.receiveShadow = true;
+					part.castShadow = true;
+				}
+			});
 		}, undefined, function (error) {
 			console.error(error);
 		});
@@ -368,6 +398,12 @@ function loadBottles() {
 			scene.add(model);
 			model.position.set(-7, 3, -6);
 			model.scale.set(0.3, 0.3, 0.3);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					// part.receiveShadow = true;
+					part.castShadow = true;
+				}
+			});
 		}, undefined, function (error) {
 			console.error(error);
 		});
@@ -379,6 +415,12 @@ function loadBottles() {
 			scene.add(model);
 			model.position.set(-4, 1.65, 6.75);
 			model.scale.set(0.4, 0.4, 0.4);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					// part.receiveShadow = true;
+					part.castShadow = true;
+				}
+			});
 		}, undefined, function (error) {
 			console.error(error);
 		});
@@ -391,6 +433,12 @@ function loadBottles() {
 			model.position.set(6.5, 1.7, -9);
 			model.scale.set(0.02, 0.02, 0.02);
 			model.rotation.set(3 * Math.PI / 4, 0, Math.PI / 2);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					// part.receiveShadow = true;
+					part.castShadow = true;
+				}
+			});
 		}, undefined, function (error) {
 			console.error(error);
 		});
