@@ -75,6 +75,62 @@ export function Furniture_body() {
     PC_Case_body.position.set(-6.47, 1.2, -6.25);
     objectsFurniture_body.push(PC_Case_body);
 
+    var PC_table_body = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(1.3, 3, 0.1)),
+    });
+    PC_table_body.position.set(-6.5, 2.9, -8.2);
+    PC_table_body.quaternion.setFromEuler(Math.PI / 2, 0, 0);
+    objectsFurniture_body.push(PC_table_body);
+
+    var PC_keyboard_body = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.4, 1, 0.03)),
+    });
+    PC_keyboard_body.position.set(-6.2, 3.1, -8.4);
+    PC_keyboard_body.quaternion.setFromEuler(Math.PI / 2, 168 * Math.PI / 180, 0);
+    objectsFurniture_body.push(PC_keyboard_body);
+
+    var PC_screen_body = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.85, 0.69, 0.06)),
+    });
+    PC_screen_body.position.set(-7.2, 4.05, -8.45);
+    PC_screen_body.quaternion.setFromEuler(0, Math.PI / 2, 0);
+    objectsFurniture_body.push(PC_screen_body);
+
+    var PC_leg_body = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.35, 0.3, 0.07)),
+    });
+    PC_leg_body.position.set(-7.41, 3.43, -8.45);
+    PC_leg_body.quaternion.setFromEuler(0, Math.PI / 2, 0);
+    objectsFurniture_body.push(PC_leg_body);
+
+    var PC_leg_body1 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.3, 0.95, 0.03)),
+    });
+    PC_leg_body1.position.set(-7.4, 3, -8.45);
+    PC_leg_body1.quaternion.setFromEuler(Math.PI / 2, 0, 0);
+    objectsFurniture_body.push(PC_leg_body1);
+
+    var PC_chair_body1 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(1, 1.2, 0.1)),
+    });
+    PC_chair_body1.position.set(-4.1, 3.3, -8.45);
+    PC_chair_body1.quaternion.setFromEuler(0, Math.PI / 2, 0);
+    objectsFurniture_body.push(PC_chair_body1);
+
+    var magic_bottle_body = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.2, 0.55, 0.2)),
+    });
+    magic_bottle_body.position.set(-7, 3.6, -6);
+    magic_bottle_body.quaternion.setFromEuler(0, 0, 0);
+    objectsFurniture_body.push(magic_bottle_body);
+
     //chair at desk
     var chair = new CANNON.Body({
         type: CANNON.Body.STATIC,
