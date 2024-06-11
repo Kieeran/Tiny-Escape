@@ -1,9 +1,9 @@
+import * as CANNON from 'cannon-es';
+import CannonDebugger from 'cannon-es-debugger';
 import * as THREE from 'three';
-import * as CANNON from 'cannon-es'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { CharacterControls } from './characterControl';
-import CannonDebugger from 'cannon-es-debugger';
 
 let scene, camera, renderer, controls;
 let loader;
@@ -44,6 +44,7 @@ function init() {
 	loadRoom();
 	loadFurniture();
 	loadBottles();
+	loadToys();
 
 	addObjectBody();
 
@@ -207,6 +208,25 @@ function loadFurniture() {
 		});
 }
 
+function loadToys() {
+	//baby_boo
+	loader.load(
+		'3D_Models/Toys/baby_boo/scene.gltf', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(3.5, 2, -8.5);
+			model.rotation.set(0, -Math.PI / 4, -Math.PI / 4);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					part.castShadow = true;
+				}
+			});
+		}, undefined, function (error) {
+			console.error(error);
+		});
+
+}
+
 function loadBottles() {
 	//magic bottles
 	loader.load(
@@ -235,7 +255,7 @@ function loadBottles() {
 		'3D_Models/Furniture/bottles/potions_bottle.glb', function (gltf) {
 			var model = gltf.scene;
 			scene.add(model);
-			model.position.set(3.5, 1.7, -7);
+			model.position.set(6.5, 1.7, -9);
 			model.scale.set(0.02, 0.02, 0.02);
 			model.rotation.set(3 * Math.PI / 4, 0, Math.PI / 2);
 		}, undefined, function (error) {
