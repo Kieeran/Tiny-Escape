@@ -17,6 +17,9 @@ let characterControls;
 let physicsWorld, cannonDebugger;
 let characterBody;
 
+let models = [];
+let toy_chair;
+
 let gui;
 
 let body;
@@ -412,6 +415,7 @@ function loadToys() {
 					part.castShadow = true;
 				}
 			});
+			models.push(model);
 		}, undefined, function (error) {
 			console.error(error);
 		});
@@ -619,6 +623,40 @@ function addObjectBody() {
 	});
 	body.position.set(0, 1, 0);
 	physicsWorld.addBody(body);
+
+	toy_chair = new CANNON.Body({
+		mass: 5,
+		shape: new CANNON.Box(new CANNON.Vec3(0.25, 0.025, 0.25)),
+	});
+	toy_chair.quaternion.setFromEuler(0, 7 * Math.PI / 180, 0)
+	toy_chair.addShape(
+		new CANNON.Box(new CANNON.Vec3(0.05, 0.2, 0.05)),
+		new CANNON.Vec3(0.175, -0.23, 0.179),
+	)
+
+	toy_chair.addShape(
+		new CANNON.Box(new CANNON.Vec3(0.05, 0.2, 0.05)),
+		new CANNON.Vec3(-0.175, -0.23, 0.179),
+	)
+
+	toy_chair.addShape(
+		new CANNON.Box(new CANNON.Vec3(0.05, 0.2, 0.05)),
+		new CANNON.Vec3(0.175, -0.23, -0.179),
+	)
+
+	toy_chair.addShape(
+		new CANNON.Box(new CANNON.Vec3(0.05, 0.2, 0.05)),
+		new CANNON.Vec3(-0.175, -0.23, -0.179),
+	)
+
+	toy_chair.addShape(
+		new CANNON.Box(new CANNON.Vec3(0.25, 0.25, 0.01)),
+		new CANNON.Vec3(0, 0.4, -0.2),
+		new CANNON.Quaternion(0, 0, 0)
+	)
+
+	physicsWorld.addBody(toy_chair);
+	toy_chair.position.set(2, 5, 0);
 }
 
 function addLight() {
@@ -661,6 +699,9 @@ function animate() {
 	controls.update();
 	cannonDebugger.update();
 	physicsWorld.fixedStep();
+
+	models[0].position.copy(toy_chair.position);
+	models[0].quaternion.copy(toy_chair.quaternion);
 
 	updateGui();
 
