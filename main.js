@@ -223,6 +223,21 @@ function loadFurniture() {
 		}, undefined, function (error) {
 			console.error(error);
 		});
+	//books
+	loader.load(
+		'3D_Models/Furniture/books.glb', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.scale.set(0.7, 0.5, 1);
+			model.position.set(-7, 5.65, 2.25);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					part.castShadow = true;
+				}
+			});
+		}, undefined, function (error) {
+			console.error(error);
+		});
 
 	//chair
 	loader.load(
