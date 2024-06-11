@@ -269,6 +269,50 @@ function loadToys() {
 		}, undefined, function (error) {
 			console.error(error);
 		});
+	//the_toy_chair
+	loader.load(
+		'3D_Models/Toys/toy_chair.glb', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(-1, 1, 0);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					part.castShadow = true;
+				}
+			});
+		}, undefined, function (error) {
+			console.error(error);
+		});
+
+	//toy_cars
+	loader.load(
+		'3D_Models/Toys/the_toy_car.glb', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(-4, 1, 0);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					part.castShadow = true;
+				}
+			});
+		}, undefined, function (error) {
+			console.error(error);
+		});
+	//dinosaur
+	loader.load(
+		'3D_Models/Toys/toy_dinosaur.glb', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(-4, 1, 0);
+			model.scale.set(0.3, 0.3, 0.3);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					part.castShadow = true;
+				}
+			});
+		}, undefined, function (error) {
+			console.error(error);
+		});
 
 }
 
