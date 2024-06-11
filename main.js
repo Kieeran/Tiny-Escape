@@ -4,6 +4,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { CharacterControls } from './characterControl';
+import { Furniture_body } from './Furniture_body.js';
+import { sceneBoundingBox } from './sceneBoundingBox.js';
 
 let scene, camera, renderer, controls;
 let loader;
@@ -446,6 +448,16 @@ function addObjectBody() {
 	groundBody.material = material
 	characterBody.material = material
 	planeBody.material = material
+
+	var objectsBoundingBox = sceneBoundingBox(physicsWorld);
+	objectsBoundingBox.forEach(function (item, index) {
+		physicsWorld.addBody(item);
+	})
+
+	var objectsFurniture_body = Furniture_body(physicsWorld);
+	objectsFurniture_body.forEach(function (item, index) {
+		physicsWorld.addBody(item);
+	})
 }
 
 function addLight() {
