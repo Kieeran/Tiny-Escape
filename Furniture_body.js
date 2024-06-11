@@ -123,6 +123,14 @@ export function Furniture_body() {
     PC_chair_body1.quaternion.setFromEuler(0, Math.PI / 2, 0);
     objectsFurniture_body.push(PC_chair_body1);
 
+    var window_seat = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(5.25, 0.1, 0.5)),
+    });
+    window_seat.position.set(0, 3.2, -12.1);
+    window_seat.quaternion.setFromEuler(0, 0, 0);
+    objectsFurniture_body.push(window_seat);
+
     var magic_bottle_body = new CANNON.Body({
         type: CANNON.Body.STATIC,
         shape: new CANNON.Box(new CANNON.Vec3(0.2, 0.55, 0.2)),
