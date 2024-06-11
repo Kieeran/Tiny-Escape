@@ -488,6 +488,10 @@ function addControlKey() {
 			}
 		}
 
+		if (keyPressed['q']) {
+			console.log(characterBody.position);
+		}
+
 		if (keyPressed[' '] && Math.abs(characterBody.velocity.y) < 0.1)
 			characterBody.velocity.y = 7
 
