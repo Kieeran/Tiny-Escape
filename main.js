@@ -507,22 +507,6 @@ function addObjectBody() {
 	groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0)
 	physicsWorld.addBody(groundBody);
 
-	var boxBody = new CANNON.Body({
-		mass: 5,
-		shape: new CANNON.Box(new CANNON.Vec3(1, 1, 1)),
-		friction: 0,
-		restitution: 0
-	});
-	boxBody.position.set(4, 2, 0);
-	physicsWorld.addBody(boxBody);
-
-	var planeBody = new CANNON.Body({
-		type: CANNON.Body.STATIC,
-		shape: new CANNON.Box(new CANNON.Vec3(2, 0.75, 4)),
-	});
-	planeBody.position.set(-4, 0.75, 0);
-	physicsWorld.addBody(planeBody);
-
 	characterBody = new CANNON.Body({
 		mass: 100,
 		shape: new CANNON.Cylinder(0.15, 0.15, 0.44, 20),
@@ -535,9 +519,8 @@ function addObjectBody() {
 	material.friction = 0;
 	material.restitution = 0;
 
-	groundBody.material = material
-	characterBody.material = material
-	planeBody.material = material
+	groundBody.material = material;
+	characterBody.material = material;
 
 	var objectsBoundingBox = sceneBoundingBox(physicsWorld);
 	objectsBoundingBox.forEach(function (item, index) {
