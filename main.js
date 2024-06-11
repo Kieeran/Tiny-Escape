@@ -444,6 +444,24 @@ function loadToys() {
 		}, undefined, function (error) {
 			console.error(error);
 		});
+
+	//mario statue
+	loader.load(
+		'3D_Models/Toys/super_mario_toys.glb', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(-7, 5.65, -3);
+			model.scale.set(0.1, 0.1, 0.1);
+			model.rotation.set(0, Math.PI / 2, 0);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					part.castShadow = true;
+				}
+			});
+		}, undefined, function (error) {
+			console.error(error);
+		});
+
 	//frame_decor
 	loader.load(
 		'3D_Models/Toys/frames_decor.glb', function (gltf) {
