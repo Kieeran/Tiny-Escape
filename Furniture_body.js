@@ -6,10 +6,10 @@ export function Furniture_body() {
 
     var bed_body = new CANNON.Body({
         type: CANNON.Body.STATIC,
-        shape: new CANNON.Box(new CANNON.Vec3(4, 4, 0.6)),
+        shape: new CANNON.Box(new CANNON.Vec3(3, 3.4, 0.6)),
     });
-    bed_body.position.set(0, 5.5, 12);
-    // bed_body.rotation.set(0, Math.PI / 2, 0);
+    bed_body.position.set(4.5, 0.65, -8.5);
+    bed_body.quaternion.setFromEuler(Math.PI / 2, 0, 0);
     objectsFurniture_body.push(bed_body);
 
 
