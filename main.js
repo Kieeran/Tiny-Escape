@@ -19,6 +19,11 @@ let characterBody;
 
 let body;
 let gui;
+let rotateBody = ({
+	x: 0,
+	y: 0,
+	z: 0
+})
 
 init();
 
@@ -81,8 +86,19 @@ function datGui() {
 	gui.add(body.position, 'x', -20, 20).name('Position x')
 	gui.add(body.position, 'y', -20, 20).name('Position y')
 	gui.add(body.position, 'z', -20, 20).name('Position z')
+
+	gui.add(rotateBody, 'x', -5, 5).name('Rotate x')
+	gui.add(rotateBody, 'y', -5, 5).name('Rotate y')
+	gui.add(rotateBody, 'z', -5, 5).name('Rotate z')
 }
 
+function updateGui() {
+	body.quaternion.setFromEuler(
+		rotateBody.x,
+		rotateBody.y,
+		rotateBody.z,
+	)
+}
 
 // function loadCharacter() {
 // 	loader.load('3D_Models/Character/Soldier.glb', function (gltf) {
@@ -601,6 +617,8 @@ function animate() {
 	controls.update();
 	cannonDebugger.update();
 	physicsWorld.fixedStep();
+
+	updateGui();
 
 	if (characterControls) {
 		characterControls.update(mixerUpdateDelta, keyPressed);
