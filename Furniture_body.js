@@ -3,7 +3,7 @@ import * as CANNON from 'cannon-es';
 export function Furniture_body() {
 
     let objectsFurniture_body = [];
-
+    //bed
     var bed_surface_body = new CANNON.Body({
         type: CANNON.Body.STATIC,
         shape: new CANNON.Box(new CANNON.Vec3(3, 3.4, 0.6)),
@@ -75,6 +75,7 @@ export function Furniture_body() {
     PC_Case_body.position.set(-6.47, 1.2, -6.25);
     objectsFurniture_body.push(PC_Case_body);
 
+    //chair at desk
     var chair = new CANNON.Body({
         type: CANNON.Body.STATIC,
         shape: new CANNON.Cylinder(0.1, 0.1, 1.5, 20),
@@ -179,6 +180,135 @@ export function Furniture_body() {
     chair12.quaternion.setFromEuler(0, 0, 0);
     objectsFurniture_body.push(chair12);
 
+    //tea table
+    var table_surface = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Cylinder(1.6, 1.6, 0.1, 20),
+    });
+    table_surface.position.set(-4, 1.6, 7);
+    objectsFurniture_body.push(table_surface);
+
+    var table_body = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.15, 0.8, 0.15)),
+    });
+    table_body.position.set(-4, 0.8, 7);
+    objectsFurniture_body.push(table_body);
+
+    var table_leg1 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(1.12, 0.05, 0.24)),
+    });
+    table_leg1.position.set(-4, 0.06, 7);
+    objectsFurniture_body.push(table_leg1);
+
+    var table_leg2 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.24, 0.05, 1.12)),
+    });
+    table_leg2.position.set(-4, 0.06, 7);
+    objectsFurniture_body.push(table_leg2);
+
+    var table_leg3 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.5, 0.05, 0.1)),
+    });
+    table_leg3.position.set(-3.5, 0.52, 7);
+    table_leg3.quaternion.setFromEuler(0, 0, -1);
+
+    objectsFurniture_body.push(table_leg3);
+
+    var table_leg4 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.5, 0.05, 0.1)),
+    });
+    table_leg4.position.set(-4.5, 0.52, 7);
+    table_leg4.quaternion.setFromEuler(0, 0, 1);
+
+    objectsFurniture_body.push(table_leg4);
+
+    var table_leg5 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.05, 0.5, 0.05)),
+    });
+    table_leg5.position.set(-4, 0.5, 6.56);
+    table_leg5.quaternion.setFromEuler(0.7, 0, 0);
+
+    objectsFurniture_body.push(table_leg5);
+
+    var table_leg5 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.05, 0.5, 0.05)),
+    });
+    table_leg5.position.set(-4, 0.5, 7.5);
+    table_leg5.quaternion.setFromEuler(-0.7, 0, 0);
+    objectsFurniture_body.push(table_leg5);
+
+    //chair
+    var chair_leg1 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.05, 0.3, 0.05)),
+    });
+    chair_leg1.position.set(-6.68, 0.35, 9.9);
+    chair_leg1.quaternion.setFromEuler(0, 0, 160);
+    objectsFurniture_body.push(chair_leg1);
+
+    var chair_leg2 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.05, 0.3, 0.05)),
+    });
+    chair_leg2.position.set(-5.9, 0.49, 8.899);
+    chair_leg2.quaternion.setFromEuler(144.9, 0, 0);
+    objectsFurniture_body.push(chair_leg2);
+
+    var chair_leg3 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.05, 0.3, 0.05)),
+    });
+    chair_leg3.position.set(-4.899, 0.5, 9.91);
+    chair_leg3.quaternion.setFromEuler(0, 0, 23 * Math.PI / 180);
+    objectsFurniture_body.push(chair_leg3);
+
+    var chair_leg4 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.05, 0.3, 0.05)),
+    });
+    chair_leg4.position.set(-5.89, 0.4, 10.69);
+    chair_leg4.quaternion.setFromEuler(162 * Math.PI / 180, 0, 0);
+    objectsFurniture_body.push(chair_leg4);
+
+
+    var chair_leg5 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.05, 0.3, 0.05)),
+    });
+    chair_leg5.position.set(-1.28, 0.5, 9.17);
+    chair_leg5.quaternion.setFromEuler(201 * Math.PI / 180, 0, 168 * Math.PI / 180);
+    objectsFurniture_body.push(chair_leg5);
+
+    var chair_leg6 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.05, 0.3, 0.05)),
+    });
+    chair_leg6.position.set(-1.45, 0.38, 10.4);
+    chair_leg6.quaternion.setFromEuler(174 * Math.PI / 180, 0, 166 * Math.PI / 180);
+    objectsFurniture_body.push(chair_leg6);
+
+    var chair_leg7 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.05, 0.3, 0.05)),
+    });
+    chair_leg7.position.set(-2.54, 0.38, 10.4);
+    chair_leg7.quaternion.setFromEuler(0, 0, 164 * Math.PI / 180);
+    objectsFurniture_body.push(chair_leg7);
+
+    var chair_leg8 = new CANNON.Body({
+        type: CANNON.Body.STATIC,
+        shape: new CANNON.Box(new CANNON.Vec3(0.05, 0.3, 0.05)),
+    });
+    chair_leg8.position.set(-2.72, 0.5, 9.12);
+    chair_leg8.quaternion.setFromEuler(14 * Math.PI / 180, 0, 162 * Math.PI / 180);
+    objectsFurniture_body.push(chair_leg8);
 
     return objectsFurniture_body;
 
