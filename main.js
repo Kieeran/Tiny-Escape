@@ -70,6 +70,8 @@ function init() {
 	loadBottles();
 	loadToys();
 
+	loadCubeMap();
+
 	addObjectBody();
 
 	actions = new Map();
@@ -565,6 +567,19 @@ function loadBottles() {
 		});
 }
 
+function loadCubeMap() {
+	scene.background = new THREE.CubeTextureLoader()
+		.setPath('textures/cubeMaps/')
+		.load([
+			'px.png',
+			'nx.png',
+			'py.png',
+			'ny.png',
+			'pz.png',
+			'nz.png'
+		]);
+}
+
 function addControlKey() {
 
 	document.addEventListener('keydown', (event) => {
@@ -622,8 +637,7 @@ function addObjectBody() {
 		shape: new CANNON.Cylinder(0.15, 0.15, 0.44, 20),
 		angularDamping: 0.95,
 	});
-	//characterBody.position.set(0, 0.2, 0);
-	characterBody.position.set(4, 4, -12);
+	characterBody.position.set(0, 0.2, 0);
 	physicsWorld.addBody(characterBody);
 
 	const material = new CANNON.Material("defaultMaterial");
