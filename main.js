@@ -629,7 +629,7 @@ function addObjectBody() {
 		shape: shape,
 	});
 	body.position.set(0, 1, 0);
-	physicsWorld.addBody(body);
+	//physicsWorld.addBody(body);
 
 	toy_chair = new CANNON.Body({
 		mass: 5,

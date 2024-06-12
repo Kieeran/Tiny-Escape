@@ -120,7 +120,9 @@ export class CharacterControls {
             this.currentAction = play;
         }
 
-        if (this.currentAction == 'Running' || this.currentAction == 'Walking') {
+        if (this.currentAction == 'Running' ||
+            this.currentAction == 'Walking' ||
+            this.currentAction == 'Jump') {
             var angleYCameraDirection = Math.atan2(
                 this.camera.position.x - this.model.position.x,
                 this.camera.position.z - this.model.position.z
