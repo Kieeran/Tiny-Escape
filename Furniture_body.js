@@ -53,13 +53,6 @@ export function Furniture_body() {
     mini_pillow_left.quaternion.setFromEuler(-Math.PI / 8, 0, 0);
     objectsFurniture_body.push(mini_pillow_left);
 
-    var babyboo = new CANNON.Body({
-        type: CANNON.Body.STATIC,
-        shape: new CANNON.Sphere(0.9),
-    });
-    babyboo.position.set(3.3, 2, -8.5);
-    objectsFurniture_body.push(babyboo);
-
     var potions_bottle = new CANNON.Body({
         type: CANNON.Body.STATIC,
         shape: new CANNON.Cylinder(0.3, 0.2, 0.9, 20),

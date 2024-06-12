@@ -18,7 +18,7 @@ let physicsWorld, cannonDebugger;
 let characterBody;
 
 let models = [];
-let toy_chair, spinner, toy_car, toy_truck, toy_rubikcube;
+let toy_chair, spinner, toy_car, toy_truck, toy_rubikcube, baby_boo;
 
 let gui;
 
@@ -349,16 +349,18 @@ function loadToys() {
 		'3D_Models/Toys/baby_boo/scene.gltf', function (gltf) {
 			var model = gltf.scene;
 			scene.add(model);
-			model.position.set(3.5, 2, -8.5);
+			model.position.set(0, 3, 0);
 			model.rotation.set(0, -Math.PI / 4, -Math.PI / 4);
 			model.traverse(function (part) {
 				if (part.isMesh) {
 					part.castShadow = true;
 				}
 			});
+			models.push(model);
 		}, undefined, function (error) {
 			console.error(error);
 		});
+
 	//motorbike
 	loader.load(
 		'3D_Models/Toys/motorcycle/scene.gltf', function (gltf) {
@@ -792,6 +794,14 @@ function addObjectBody() {
 	})
 	toy_rubikcube.position.set(-3, 2, 6);
 	physicsWorld.addBody(toy_rubikcube);
+
+	baby_boo = new CANNON.Body({
+		mass: 5,
+		shape: new CANNON.Sphere(0.9)
+	})
+	baby_boo.position.set(3.3, 4, -8.5);
+	baby_boo.quaternion.setFromEuler(Math.PI / 2, 0.2, 0.5)
+	physicsWorld.addBody(baby_boo);
 }
 
 function addLight() {
@@ -847,8 +857,11 @@ function animate() {
 	models[3].position.copy(toy_rubikcube.position);
 	models[3].quaternion.copy(toy_rubikcube.quaternion);
 
-	models[4].position.copy(toy_car.position);
-	models[4].quaternion.copy(toy_car.quaternion);
+	models[4].position.copy(baby_boo.position);
+	models[4].quaternion.copy(baby_boo.quaternion);
+
+	models[5].position.copy(toy_car.position);
+	models[5].quaternion.copy(toy_car.quaternion);
 
 	updateGui();
 
