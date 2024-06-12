@@ -18,7 +18,7 @@ let physicsWorld, cannonDebugger;
 let characterBody;
 
 let models = [];
-let toy_chair, spinner, toy_car, toy_truck;
+let toy_chair, spinner, toy_car, toy_truck, toy_rubikcube;
 
 let gui;
 
@@ -106,6 +106,7 @@ function datGui() {
 	gui.add(rotateBody, 'x', 0, 360).name('Rotate x')
 	gui.add(rotateBody, 'y', 0, 360).name('Rotate y')
 	gui.add(rotateBody, 'z', 0, 360).name('Rotate z')
+	gui.close()
 }
 
 function updateGui() {
@@ -474,6 +475,23 @@ function loadToys() {
 			console.error(error);
 		});
 
+	//rubik cube
+	loader.load(
+		'3D_Models/Toys/rubiks_cube.glb', function (gltf) {
+			var model = gltf.scene;
+			scene.add(model);
+			model.position.set(0, 2, 0);
+			model.scale.set(0.2, 0.2, 0.2);
+			model.traverse(function (part) {
+				if (part.isMesh) {
+					part.castShadow = true;
+				}
+			});
+			models.push(model)
+		}, undefined, function (error) {
+			console.error(error);
+		});
+
 	//frame_decor
 	loader.load(
 		'3D_Models/Toys/frames_decor.glb', function (gltf) {
@@ -768,6 +786,13 @@ function addObjectBody() {
 
 	toy_truck.position.set(0, 3, 5);
 	physicsWorld.addBody(toy_truck)
+
+	toy_rubikcube = new CANNON.Body({
+		mass: 5,
+		shape: new CANNON.Box(new CANNON.Vec3(0.095, 0.095, 0.095))
+	})
+	toy_rubikcube.position.set(0, 2, 0)
+	physicsWorld.addBody(toy_rubikcube)
 }
 
 function addLight() {
@@ -820,8 +845,11 @@ function animate() {
 	models[2].position.copy(toy_chair.position);
 	models[2].quaternion.copy(toy_chair.quaternion);
 
-	models[3].position.copy(toy_car.position);
-	models[3].quaternion.copy(toy_car.quaternion);
+	models[3].position.copy(toy_rubikcube.position);
+	models[3].quaternion.copy(toy_rubikcube.quaternion);
+
+	models[4].position.copy(toy_car.position);
+	models[4].quaternion.copy(toy_car.quaternion);
 
 	updateGui();
 
