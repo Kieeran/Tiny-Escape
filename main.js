@@ -622,7 +622,8 @@ function addObjectBody() {
 		shape: new CANNON.Cylinder(0.15, 0.15, 0.44, 20),
 		angularDamping: 0.95,
 	});
-	characterBody.position.set(0, 0.2, 0);
+	//characterBody.position.set(0, 0.2, 0);
+	characterBody.position.set(4, 4, -12);
 	physicsWorld.addBody(characterBody);
 
 	const material = new CANNON.Material("defaultMaterial");
@@ -647,7 +648,7 @@ function addObjectBody() {
 		type: CANNON.Body.STATIC,
 		shape: shape,
 	});
-	body.position.set(0, 1, 0);
+	body.position.set(-4, 4, -12);
 	//physicsWorld.addBody(body);
 
 	toy_chair = new CANNON.Body({
