@@ -857,7 +857,7 @@ function animate() {
 	mixerUpdateDelta = clock.getDelta();
 
 	controls.update();
-	cannonDebugger.update();
+	//cannonDebugger.update();
 	physicsWorld.fixedStep();
 
 	models[0].position.copy(spinner.position);
