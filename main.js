@@ -480,7 +480,6 @@ function loadToys() {
 		'3D_Models/Toys/rubiks_cube.glb', function (gltf) {
 			var model = gltf.scene;
 			scene.add(model);
-			model.position.set(0, 2, 0);
 			model.scale.set(0.2, 0.2, 0.2);
 			model.traverse(function (part) {
 				if (part.isMesh) {
@@ -791,8 +790,8 @@ function addObjectBody() {
 		mass: 5,
 		shape: new CANNON.Box(new CANNON.Vec3(0.095, 0.095, 0.095))
 	})
-	toy_rubikcube.position.set(0, 2, 0)
-	physicsWorld.addBody(toy_rubikcube)
+	toy_rubikcube.position.set(-3, 2, 6);
+	physicsWorld.addBody(toy_rubikcube);
 }
 
 function addLight() {
