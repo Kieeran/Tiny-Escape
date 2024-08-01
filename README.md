@@ -28,6 +28,8 @@ Even though we've completed the course, our project is ongoing. We plan to updat
 ## Results
 ![Screenshot 2024-08-01 232658](https://github.com/user-attachments/assets/649899d4-8709-4ab5-bb36-0b222adcb2d1)
 ![Screenshot 2024-08-01 232658](https://github.com/user-attachments/assets/93a087ac-e677-4575-a544-74ddd3c69aed)
+![Untitled video - Made with Clipchamp](https://github.com/user-attachments/assets/bdee17d2-fd79-4358-95d4-4517190d9d75)
+![Untitled video - Made with Clipchamp (1)](https://github.com/user-attachments/assets/0aa492f0-38b2-4515-99b5-9c69cda53933)
 
 - Video demo: [Link](https://drive.google.com/file/d/1d62C7dNjcEUtNvKyhJXxShn26mpqcHvy/view?usp=sharing)
   
