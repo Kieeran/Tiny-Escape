@@ -29,7 +29,7 @@ Even though we've completed the course, our project is ongoing. We plan to updat
 ![Screenshot 2024-08-01 232658](https://github.com/user-attachments/assets/649899d4-8709-4ab5-bb36-0b222adcb2d1)
 ![Screenshot 2024-08-01 232658](https://github.com/user-attachments/assets/93a087ac-e677-4575-a544-74ddd3c69aed)
 
-- Link: https://github.com/Kieeran/Tiny-Escape/blob/master/video_demo.mp4
+- Video demo: [Link](https://github.com/Kieeran/Tiny-Escape/blob/master/video_demo.mp4)
   
 ## Usage
 - Set up:
