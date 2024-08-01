@@ -2,7 +2,8 @@
 
 ![Screenshot 2024-08-01 222047](https://github.com/user-attachments/assets/2224db83-1db2-41a9-b8f4-636f8ae199e5)
 
-A tiny robot has to face hard challenges and go through struggles. His prizes are not only an antidote but also funny experiences.``
+A tiny robot has to face hard challenges and go through struggles. His prizes are not only an antidote but also funny experiences.
+
 Tiny Escape is our computer graphics course project, created using JavaScript. The game's inspiration comes from [Grounded](https://store.steampowered.com/app/962130/Grounded/) - a 3D sandbox survival game.
 
 # Objectives
