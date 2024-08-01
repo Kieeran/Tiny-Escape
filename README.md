@@ -1,31 +1,31 @@
-I. Introduction
-- A tiny robot has to face hard challenges and go through struggles. His prizes are not only an antidote but also funny experiences.
-- This idea originates from the “Grounded” game.
-  + Adventure
-  + Funny
-  
-II. Authors
-- Lecturer: Cáp Phạm Đình Thăng
-- Students:
-  + Nguyễn Phạm Quốc Bảo - 21521856
-  +  Trần Thị Thanh Dung - 21521984
+# Tiny Escape
 
-III. Objectives
-- Load 3D model (both static and animated model)
-- Perform perspective projection and adjust near and far clipping plane coordinates
-- Apply basic affine transformations to these basic shapes: rotation,..
-- Light (full lighting, light source, shadow,.. ), texture, animations, ...
+![Screenshot 2024-08-01 222047](https://github.com/user-attachments/assets/2224db83-1db2-41a9-b8f4-636f8ae199e5)
 
-IV. Tools
+A tiny robot has to face hard challenges and go through struggles. His prizes are not only an antidote but also funny experiences.``
+Tiny Escape is our computer graphics course project, created using JavaScript. The game's inspiration comes from [Grounded](https://store.steampowered.com/app/962130/Grounded/) - a 3D sandbox survival game.
+
+# Objectives
+- Create and load both static and animated 3D models into scene
+- Perform basic transformations in computer graphics
+- Study and apply material properties, texture, animations, lighting techniques, and camera settings
+
+## Built with
+- JavaScript
+
+## Status
+Even though we've completed the course, our project is ongoing. We plan to update it in the future
+
+# Tools
 - Threejs
 - Cannonjs
 - Blender
 - Others: sketchfab, mixamo
 
-V. Demo
+# Demo
 - Link: https://github.com/Kieeran/Tiny-Escape/blob/master/video_demo.mp4
   
-VI. Building
+# Usage
 - Set up:
   ```
   git clone https://github.com/Kieeran/Tiny-Escape.git
@@ -40,8 +40,10 @@ VI. Building
   ```
   npx vite
   ```
-- How to use:
+- Control:
   + W, A, S, D: forward, left, backward, right
   + Space: jump
-  + 1,2,3,4,5,6: animation of character.
+  + 1, 2, 3, 4, 5, 6: animation of character.
+
+# Credits
 
