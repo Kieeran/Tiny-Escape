@@ -20,10 +20,10 @@ Tiny Escape is our computer graphics course project, created using JavaScript an
 Even though we've completed the course, our project is ongoing. We plan to update it in the future
 
 ## Libraries and Tools
-- [Threejs](https://threejs.org/)
-- [Cannonjs](https://github.com/pmndrs/cannon-es)
-- [Blender](https://www.blender.org/)
-- Others: [Sketchfab](https://sketchfab.com/feed), [Mixamo](https://www.mixamo.com/#/)
+- [Threejs](https://threejs.org/) scene
+- [Cannonjs](https://github.com/pmndrs/cannon-es) physics
+- [Blender](https://www.blender.org/) 3d models
+- Others: [Sketchfab](https://sketchfab.com/feed), [Mixamo](https://www.mixamo.com/#/) character animations
 
 ## Sample Results
 ![Screenshot 2024-08-01 232658](https://github.com/user-attachments/assets/649899d4-8709-4ab5-bb36-0b222adcb2d1)
