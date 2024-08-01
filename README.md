@@ -56,4 +56,5 @@ Even though we've completed the course, our project is ongoing. We plan to updat
 ## Credits
 Special thanks to:
 - [Tran Thi Thanh Dung](https://github.com/ThanhDung2003) for your SUPER BIG collaboration and support
+
 And thanks to many more who have helped with suggestions and feedback!
