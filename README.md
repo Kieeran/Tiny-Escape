@@ -23,9 +23,9 @@ Even though we've completed the course, our project is ongoing. We plan to updat
 - [Threejs](https://threejs.org/)
 - [Cannonjs](https://github.com/pmndrs/cannon-es)
 - [Blender](https://www.blender.org/)
-- Others: [sketchfab](https://sketchfab.com/feed), [mixamo](https://www.mixamo.com/#/)
+- Others: [Sketchfab](https://sketchfab.com/feed), [Mixamo](https://www.mixamo.com/#/)
 
-## Results
+## Sample Results
 ![Screenshot 2024-08-01 232658](https://github.com/user-attachments/assets/649899d4-8709-4ab5-bb36-0b222adcb2d1)
 ![Screenshot 2024-08-01 232658](https://github.com/user-attachments/assets/93a087ac-e677-4575-a544-74ddd3c69aed)
 ![Untitled video - Made with Clipchamp](https://github.com/user-attachments/assets/bdee17d2-fd79-4358-95d4-4517190d9d75)
