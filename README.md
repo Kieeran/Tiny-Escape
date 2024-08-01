@@ -7,8 +7,8 @@ A tiny robot has to face hard challenges and go through struggles. His prizes ar
 Tiny Escape is our computer graphics course project, created using JavaScript and HTML. The game's inspiration comes from [Grounded](https://store.steampowered.com/app/962130/Grounded/) - a 3D sandbox survival game.
 
 ## Built with
-- ![JavaScript](https://github.com/user-attachments/assets/d66ab75f-a5cf-44fc-91b4-9382ca87fc82)
-- ![HTML](https://github.com/user-attachments/assets/07b93623-3776-4739-b645-073e9bb74411)
+- ![JavaScript](https://github.com/user-attachments/assets/8a87a1a0-8fcb-4ed4-af35-faf61237e9e0)
+- ![HTML](https://github.com/user-attachments/assets/18fcee9b-de49-4192-8071-c0b8b5bb0878)
 
 ## Status
 Even though we've completed the course, our project is ongoing. We plan to update it in the future
