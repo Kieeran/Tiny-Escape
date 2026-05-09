@@ -9,8 +9,8 @@ export class CharacterControls {
     cameraTarget = new THREE.Vector3();
 
     fadeDuration = 0.2;
-    runVelocity = 2;
-    walkVelocity = 1;
+    runVelocity = 1;
+    walkVelocity = 0.5;
 
     constructor(model, mixer, orbitControl, camera, actions, characterBody, currentAction) {
         this.model = model;
